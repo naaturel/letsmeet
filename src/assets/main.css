@@ -1,6 +1,12 @@
 @import './base.css';
 
-#app
+body
 {
-    margin: 1vw;
+    background-color: #fff8ed;
+}
+
+footer
+{
+    position:absolute;
+    bottom:0.5vw;
 }
