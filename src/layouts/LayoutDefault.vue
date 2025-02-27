@@ -26,7 +26,7 @@ nav {
   text-decoration: none;
   height: 2vw;
   border: 1px solid;
-  border-radius: 3px;
+  border-radius: var(--radius);
 }
 
 .main {

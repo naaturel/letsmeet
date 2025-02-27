@@ -7,17 +7,12 @@
   <div class="container">
     <div class="introduction">
       <h1>Welcome !</h1>
-      <p>This website is currently under development and might look like ugly as fuck</p>
+      <p>This website is currently under development and might look ugly as fuck</p>
     </div>
 
     <div class="actions">
-      <div>
-        Join an event
-      </div>
-
-      <div>
-        Create an event
-      </div>
+      <div class="button"><router-link to="/create">Create an event</router-link></div>
+      <div class="button"><router-link to="/join">Join an event</router-link></div>
     </div>
   </div>
 
@@ -34,19 +29,36 @@
 }
 
 .introduction {
-  justify-items: center;
-  align-content: center;
-  flex-grow: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
   height: 100%;
+  border: solid 1px;
 }
 
 .actions {
-  justify-items: center;
+  display: flex;
   flex-direction: column;
-  align-content: center;
-  flex-grow: 4;
+  justify-content: center;
+  align-items: center;
+  gap: 4vh;
   height: 100%;
-  background-color: rgba(0,0,0,0.1);
+  width: 30%;
+  border: solid 1px;
+}
+
+.button {
+  text-align: center;
+  align-content: center;
+  min-width: 10vw;
+  min-height: 5vh;
+  border-radius: var(--radius);
+  background-color: var(--secondary-color);
+  box-shadow: 2px 2px 5px;
+  border: solid 1px;
+
 }
 
 </style>
