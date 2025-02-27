@@ -3,19 +3,19 @@
 </script>
 
 <template>
-  <div class="LayoutDefault">
+  <div class="layoutDefault">
 
-    <nav class="nav">
+    <!--<nav class="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/error">Error</router-link>
-    </nav>
+    </nav>-->
 
     <main class="main">
       <slot/>
     </main>
 
-    <footer class="footer">Blank footer</footer>
+    <!--<footer class="footer">Blank footer</footer>-->
 
   </div>
 </template>
@@ -34,7 +34,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100%;
 }
 
 </style>

@@ -11,8 +11,8 @@
     </div>
 
     <div class="actions">
-      <div class="button"><router-link to="/create">Create an event</router-link></div>
-      <div class="button"><router-link to="/join">Join an event</router-link></div>
+      <router-link to="/create"><div class="button">Create an event</div></router-link>
+      <router-link to="/join"><div class="button">Join an event</div></router-link>
     </div>
   </div>
 
@@ -33,9 +33,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 75%;
   height: 100%;
-  border: solid 1px;
 }
 
 .actions {
@@ -45,8 +44,10 @@
   align-items: center;
   gap: 4vh;
   height: 100%;
-  width: 30%;
-  border: solid 1px;
+  width: 25%;
+  border-left: var(--radius);
+  background-color: var(--bruh-color);
+  box-shadow: -3px 0 3px var(--tertiary-color);
 }
 
 .button {
@@ -56,9 +57,11 @@
   min-height: 5vh;
   border-radius: var(--radius);
   background-color: var(--secondary-color);
-  box-shadow: 2px 2px 5px;
-  border: solid 1px;
+}
 
+.button:hover
+{
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 </style>

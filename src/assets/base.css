@@ -1,20 +1,25 @@
+/*
+fff8ed-1b2021-51513d-63c132
+*/
+
 :root
 {
     --primary-color : #fff8ed;
-    --secondary-color : #fff8ed;
-    --tertiary-color : #fff8ed;
+    --secondary-color : #63c132;
+    --tertiary-color : #51513d;
+    --bruh-color : #1b2021;
     --radius : 3px;
 }
 
 @media screen and (min-width: 601px) {
     :root {
-        --font-size : 18px;
+        --font-size : 1rem;
     }
 }
 
 @media screen and (max-width: 600px) {
     :root {
-        --font-size : 15px;
+        --font-size : 0.8rem;
     }
 }
 
@@ -22,11 +27,7 @@
 {
     color: #141115;
     text-decoration: none;
-    font-size: var(--font-size);
     font-family: 'PT Sans', sans-serif;
     transition: 0.3s all;
 }
 
-h1 {
-    font-size: calc(var(--font-size, 1vw) * 2.15);
-}

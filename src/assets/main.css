@@ -1,8 +1,24 @@
 @import './base.css';
 
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
 body
 {
-    background-color: var(--primary-color);
+    background: var(--primary-color);
+    font-size: var(--font-size);
+}
+
+#app
+{
+    height: 100%;
+}
+
+.layout
+{
+    height: 100%;
 }
 
 footer
