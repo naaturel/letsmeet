@@ -19,6 +19,7 @@
 
 </template>
 
+
 <style scoped>
 
 .container, .introduction, .actions {
@@ -30,9 +31,43 @@
 }
 
 .container {
-  flex-direction: row;
   width: 80%;
   gap: 10vw;
+}
+
+@media screen and (min-width: 801px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .introduction {
+    width: 50%;
+  }
+
+  .actions {
+    width: 25%;
+  }
+
+  .button {
+    width: 15vw;
+    min-width: 15vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .introduction, .actions {
+    width: 95%;
+  }
+
+  .button {
+    width: 50vw;
+    min-width: 50vw;
+  }
+
 }
 
 .introduction, .actions {
@@ -41,7 +76,7 @@
 
 .introduction {
   word-break: break-word;
-  width: 50%;
+
   min-height: 40vh;
   height: fit-content;
 
@@ -68,7 +103,6 @@
 
 .actions {
   justify-content: start;
-  width: 25%;
   gap: 4vh;
   min-height: 40vh;
   height: fit-content;
@@ -80,14 +114,12 @@
   color: var(--primary-color);
   text-align: center;
   align-content: center;
-  width: 15vw;
-  height: fit-content;
 
-  min-width: 15vw;
-  min-height: 7vh;
   border-radius: var(--radius);
   background-color: var(--secondary-color);
   word-break: break-word;
+  min-height: 7vh;
+
 }
 
 .button:hover
