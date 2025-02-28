@@ -7,12 +7,12 @@
   <div class="container">
     <div class="introduction">
       <h1>Welcome !</h1>
-      <p>This website is currently under development and might look ugly as fuck</p>
+      <p>This website is currently under <span class="colored-text">development</span> and might look ugly as fuck</p>
     </div>
 
-    <div class="actions">
-      <router-link to="/create"><div class="button">Create an event</div></router-link>
-      <router-link to="/join"><div class="button">Join an event</div></router-link>
+      <div class="actions">
+        <router-link to="/create"><div class="button">Create</div></router-link>
+        <router-link to="/join"><div class="button">Join</div></router-link>
     </div>
   </div>
 
@@ -20,48 +20,67 @@
 
 <style scoped>
 
-.container {
+.container, .introduction, .actions {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
+  padding: 0 1vw 0 1vw;
+}
+
+.container {
+  flex-direction: row;
+  width: 80%;
+}
+
+.introduction, .actions {
+  flex-direction: column;
 }
 
 .introduction {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 75%;
-  height: 100%;
+  word-break: break-word;
+  width: 50%;
+}
+
+.introduction h1
+{
+  font-size: 4rem;
+}
+
+.introduction p
+{
+  width: 80%;
+  text-align: center;
+}
+
+.colored-text
+{
+  color: var(--secondary-color);
 }
 
 .actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 50%;
   gap: 4vh;
-  height: 100%;
-  width: 25%;
-  border-left: var(--radius);
-  background-color: var(--bruh-color);
-  box-shadow: -3px 0 3px var(--tertiary-color);
 }
 
 .button {
+  color: var(--primary-color);
   text-align: center;
   align-content: center;
-  min-width: 10vw;
-  min-height: 5vh;
+  width: 15vw;
+  height: 7vh;
+
+  min-width: 15vw;
+  min-height: 7vh;
   border-radius: var(--radius);
   background-color: var(--secondary-color);
 }
 
 .button:hover
 {
-  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+  background-color: var(--header-color);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 </style>
