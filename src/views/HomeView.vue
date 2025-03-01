@@ -1,12 +1,13 @@
 <script setup lang="ts">
 
 import NavLink from "@/components/NavLink.vue";
+import TextBlock from "@/components/TextBlock.vue";
 </script>
 
 <template>
 
   <div class="container">
-    <div class="introduction">
+    <TextBlock class="introduction">
       <h1>Welcome !</h1>
       <p>
         This website is currently under <span class="colored-text">development</span> and might look ugly as fuck
@@ -16,12 +17,12 @@ import NavLink from "@/components/NavLink.vue";
         Yes I know i could have use
         a Lorem Ipsum but it seems more natural with words everyone can understand
       </p>
-    </div>
+      </TextBlock>
 
-      <div class="actions">
+      <div class="actions-group">
         <h1>Meet up <span class="colored-text">now</span> !</h1>
-        <NavLink path="/create" description="Join"></NavLink>
-        <NavLink path="/join" description="Create"></NavLink>
+        <NavLink path="/create" description="Create"></NavLink>
+        <NavLink path="/join" description="Join"></NavLink>
     </div>
   </div>
 
@@ -30,7 +31,7 @@ import NavLink from "@/components/NavLink.vue";
 
 <style scoped>
 
-.container, .introduction, .actions {
+.container, .actions-group {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,35 +44,20 @@ import NavLink from "@/components/NavLink.vue";
   gap: 10vw;
 }
 
-.introduction, .actions {
-  flex-direction: column;
-  padding: 30px;
-  min-width: 250px;
-}
-
-.introduction {
-  justify-content: start;
-  word-break: break-word;
-  height: fit-content;
-
-  border-radius: var(--radius);
-  border-left: solid 4px;
-  background: rgb(239, 239, 239);
-}
-
 .introduction p
 {
   width: 80%;
   text-align: justify;
 }
 
-.colored-text
-{
-  color: var(--secondary-color);
+.actions-group {
+  flex-direction: column;
+  padding: 30px;
+  min-width: 250px;
 }
 
-.actions {
-  justify-content: start;
+.actions-group {
+  justify-content: center;
   gap: 4vh;
   height: fit-content;
   border-radius: var(--radius);
@@ -79,8 +65,13 @@ import NavLink from "@/components/NavLink.vue";
   margin-bottom: 5vh;
 }
 
-.actions::before,
-.actions::after {
+.actions-group h1
+{
+  margin-top: 0;
+}
+
+.actions-group::before,
+.actions-group::after {
   content: "";
   position: absolute;
   width: 5%;
@@ -88,7 +79,7 @@ import NavLink from "@/components/NavLink.vue";
   border: 4px solid black;
 }
 
-.actions::before {
+.actions-group::before {
   top: 0;
   left: 0;
   border-radius: var(--radius);
@@ -96,7 +87,7 @@ import NavLink from "@/components/NavLink.vue";
   border-bottom: none;
 }
 
-.actions::after {
+.actions-group::after {
   bottom: 0;
   right: 0;
   border-radius: var(--radius);
@@ -115,7 +106,7 @@ import NavLink from "@/components/NavLink.vue";
     min-height: 40vh;
   }
 
-  .actions {
+  .actions-group {
     width: 25%;
     min-height: 35vh;
   }
@@ -131,7 +122,7 @@ import NavLink from "@/components/NavLink.vue";
     flex-direction: column;
   }
 
-  .introduction, .actions {
+  .introduction, .actions-group {
     width: 95%;
   }
 
@@ -139,7 +130,7 @@ import NavLink from "@/components/NavLink.vue";
     min-height: 25vh;
   }
 
-  .actions {
+  .actions-group {
     min-height: 40vh;
   }
 

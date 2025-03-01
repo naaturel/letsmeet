@@ -8,7 +8,7 @@ import NavLink from "@/components/NavLink.vue";
 
     <nav class="nav">
       <p>Let's<br>Meet</p>
-      <div class="nav-actions">
+      <div class="nav-actions-group">
         <NavLink path="/" description="Home"></NavLink>
         <NavLink path="/login" description="Log in"></NavLink>
         <NavLink path="/about" description="About"></NavLink>
@@ -38,7 +38,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   min-height: 10vh;
-  border: 1px solid;
+  border-bottom: 1px solid;
   border-radius: var(--radius);
   background-color: var(--header-color);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -51,7 +51,7 @@ nav p {
   margin: 4px 0 4px 0;
 }
 
-.nav-actions {
+.nav-actions-group {
   display: flex;
   flex-direction: row;
   gap: 1vw;

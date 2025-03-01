@@ -17,6 +17,11 @@ body
     background: var(--background-color);
 }
 
+.colored-text
+{
+    color: var(--secondary-color);
+}
+
 footer
 {
     position:absolute;
