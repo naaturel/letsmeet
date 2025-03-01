@@ -19,7 +19,7 @@ import NavLink from "@/components/NavLink.vue";
     </div>
 
       <div class="actions">
-        <h1>Meet up now !</h1>
+        <h1>Meet up <span class="colored-text">now</span> !</h1>
         <NavLink path="/create" description="Join"></NavLink>
         <NavLink path="/join" description="Create"></NavLink>
     </div>

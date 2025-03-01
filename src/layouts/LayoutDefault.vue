@@ -59,6 +59,8 @@ nav p {
 
 ::v-deep(nav .button) {
   font-size: calc(var(--font-size) * 0.8);
+  background-color: var(--header-color);
+  border: solid 2px ;
   height: fit-content;
 }
 
@@ -75,9 +77,9 @@ nav p {
 @media screen and (max-width: 950px) {
 
   ::v-deep(nav .button) {
-    width: 5vw;
+    width: 7vw;
 
-    min-width: 10vw;
+    min-width: 60px;
     min-height: 3vh;
   }
 }
