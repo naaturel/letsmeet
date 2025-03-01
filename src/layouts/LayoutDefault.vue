@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import NavLink from "@/components/NavLink.vue";
 </script>
 
 <template>
@@ -8,8 +9,9 @@
     <nav class="nav">
       <p>Let's<br>Meet</p>
       <div class="nav-actions">
-        <router-link to="/login"><div class="button">Login</div></router-link>
-        <router-link to="/about"><div class="button">About</div></router-link>
+        <NavLink path="/" description="Home"></NavLink>
+        <NavLink path="/login" description="Log in"></NavLink>
+        <NavLink path="/about" description="About"></NavLink>
       </div>
     </nav>
 
@@ -35,12 +37,13 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 5vw;
+  min-height: 10vh;
   border: 1px solid;
   border-radius: var(--radius);
   background-color: var(--header-color);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   padding: 0 3vw 0 2vw;
+  margin-bottom: 20px;
 }
 
 nav p {
@@ -54,6 +57,30 @@ nav p {
   gap: 1vw;
 }
 
+::v-deep(nav .button) {
+  font-size: calc(var(--font-size) * 0.8);
+  height: fit-content;
+}
+
+@media screen and (min-width: 951px) {
+
+  ::v-deep(nav .button) {
+    width: 5vw;
+
+    min-width: 5vw;
+    min-height: 4vh;
+  }
+}
+
+@media screen and (max-width: 950px) {
+
+  ::v-deep(nav .button) {
+    width: 5vw;
+
+    min-width: 10vw;
+    min-height: 3vh;
+  }
+}
 
 .main {
   display: flex;
@@ -62,28 +89,5 @@ nav p {
   align-items: center;
   flex-grow: 1;
 }
-
-.button {
-  color: var(--primary-color);
-  text-align: center;
-  align-content: center;
-  width: 5vw;
-  height: fit-content;
-
-  min-width: 5vw;
-  min-height: 4vh;
-  border-radius: var(--radius);
-  background-color: var(--secondary-color);
-
-  word-break: break-word;
-}
-
-.button:hover
-{
-  transform: scale(1.1);
-  background-color: var(--header-color);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
 
 </style>

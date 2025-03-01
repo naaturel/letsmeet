@@ -5,19 +5,9 @@
     --header-color : #FCFCFC;
     --background-color : rgba(252, 252, 252, 0.43);
     --radius : 3px;
+    --font-size : 1.3rem;
 }
 
-@media screen and (min-width: 601px) {
-    :root {
-        --font-size : 1.5rem;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    :root {
-        --font-size : 0.8rem;
-    }
-}
 
 *
 {

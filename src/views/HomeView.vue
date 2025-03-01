@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import NavLink from "@/components/NavLink.vue";
 </script>
 
 <template>
@@ -7,13 +8,20 @@
   <div class="container">
     <div class="introduction">
       <h1>Welcome !</h1>
-      <p>This website is currently under <span class="colored-text">development</span> and might look ugly as fuck</p>
+      <p>
+        This website is currently under <span class="colored-text">development</span> and might look ugly as fuck
+        bla bla bla I'm just writting things nobody will read to fill the space and see how it looks.
+      </p>
+      <p>
+        Yes I know i could have use
+        a Lorem Ipsum but it seems more natural with words everyone can understand
+      </p>
     </div>
 
       <div class="actions">
         <h1>Meet up now !</h1>
-        <router-link to="/create"><div class="button">Create</div></router-link>
-        <router-link to="/join"><div class="button">Join</div></router-link>
+        <NavLink path="/create" description="Join"></NavLink>
+        <NavLink path="/join" description="Create"></NavLink>
     </div>
   </div>
 
@@ -35,49 +43,15 @@
   gap: 10vw;
 }
 
-@media screen and (min-width: 801px) {
-  .container {
-    flex-direction: row;
-  }
-
-  .introduction {
-    width: 50%;
-  }
-
-  .actions {
-    width: 25%;
-  }
-
-  .button {
-    width: 15vw;
-    min-width: 15vw;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .introduction, .actions {
-    width: 95%;
-  }
-
-  .button {
-    width: 50vw;
-    min-width: 50vw;
-  }
-
-}
-
 .introduction, .actions {
   flex-direction: column;
+  padding: 30px;
+  min-width: 250px;
 }
 
 .introduction {
+  justify-content: start;
   word-break: break-word;
-
-  min-height: 40vh;
   height: fit-content;
 
   border-radius: var(--radius);
@@ -85,15 +59,10 @@
   background: rgb(239, 239, 239);
 }
 
-.introduction h1
-{
-  font-size: 4rem;
-}
-
 .introduction p
 {
   width: 80%;
-  text-align: center;
+  text-align: justify;
 }
 
 .colored-text
@@ -104,31 +73,11 @@
 .actions {
   justify-content: start;
   gap: 4vh;
-  min-height: 40vh;
   height: fit-content;
   border-radius: var(--radius);
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.0));
+  margin-bottom: 5vh;
 }
-
-.button {
-  color: var(--primary-color);
-  text-align: center;
-  align-content: center;
-
-  border-radius: var(--radius);
-  background-color: var(--secondary-color);
-  word-break: break-word;
-  min-height: 7vh;
-
-}
-
-.button:hover
-{
-  transform: scale(1.1);
-  background-color: var(--header-color);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
 
 .actions::before,
 .actions::after {
@@ -153,6 +102,51 @@
   border-radius: var(--radius);
   border-left: none;
   border-top: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1500px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .introduction {
+    width: 50%;
+    min-height: 40vh;
+  }
+
+  .actions {
+    width: 25%;
+    min-height: 35vh;
+  }
+
+  .introduction h1
+  {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 1501px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .introduction, .actions {
+    width: 95%;
+  }
+
+  .introduction {
+    min-height: 25vh;
+  }
+
+  .actions {
+    min-height: 40vh;
+  }
+
+  .introduction h1
+  {
+    font-size: 3rem;
+  }
 }
 
 </style>
