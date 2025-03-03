@@ -8,7 +8,7 @@
   const calendar = new Calendar();
 
   const monthYear = ref("");
-  const dates = ref([]);
+  const dates = ref([] as (number | null)[]);
 
   onMounted(() => {
     setupCalendar();
@@ -56,7 +56,7 @@
     </div>
 
     <div class="day-picker">
-      <div v-for="day in dates" :key="day" :class="{'item': day !== null}">
+      <div v-for="(day, index) in dates" :key="day ?? `null-${index}`" :class="{'item': day !== null}">
         {{ day }}
       </div>
     </div>
