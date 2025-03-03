@@ -17,6 +17,25 @@ body
     background: var(--background-color);
 }
 
+.container
+{
+    display: flex;
+    padding: 0 1vw 3vh 1vw;
+}
+
+@media screen and (min-width: 1501px) {
+    .container
+    {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
 .colored-text
 {
     color: var(--secondary-color);

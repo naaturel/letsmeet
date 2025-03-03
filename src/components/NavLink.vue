@@ -13,21 +13,6 @@ const props = defineProps<{
 
 <style scoped>
 
-@media screen and (min-width: 801px) {
-  .button {
-    width: 15vw;
-    min-width: 15vw;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .button {
-    width: 50vw;
-    min-width: 50vw;
-  }
-
-}
-
 .button {
   color: var(--primary-color);
   text-align: center;

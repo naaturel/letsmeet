@@ -105,9 +105,13 @@
 
 .day-picker, .day-names {
   display: grid;
-  grid-template-columns: repeat(7, 2fr);
+  grid-template-columns: repeat(7, 1fr);
   row-gap: 20px;
   width: 100%;
+}
+
+.day-picker {
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .day-names {

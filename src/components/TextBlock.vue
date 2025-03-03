@@ -3,25 +3,18 @@
 </script>
 
 <template>
-  <div class="text-block">
-    <slot></slot>
-  </div>
+    <div class="text-block">
+      <slot></slot>
+    </div>
 </template>
 
 <style scoped>
 
 .text-block {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 0 1vw 0 1vw;
-}
-
-.text-block {
-  flex-direction: column;
-  padding: 30px;
-  min-width: 250px;
 }
 
 .text-block {
@@ -32,6 +25,18 @@
   border-radius: var(--radius);
   border-left: solid 4px;
   background: rgb(239, 239, 239);
+}
+
+@media screen and (max-width: 1501px) {
+  .text-block {
+    padding: 5px 15px 5px 15px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .text-block {
+    padding: 10px 30px 10px 30px;
+  }
 }
 
 </style>

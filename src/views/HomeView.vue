@@ -21,8 +21,8 @@ import TextBlock from "@/components/TextBlock.vue";
 
       <div class="actions-group">
         <h1>Meet up <span class="colored-text">now</span> !</h1>
-        <NavLink path="/create" description="Create"></NavLink>
-        <NavLink path="/join" description="Join"></NavLink>
+        <NavLink path="/create" description="Create" class="button"></NavLink>
+        <NavLink path="/join" description="Join" class="button"></NavLink>
     </div>
   </div>
 
@@ -36,7 +36,6 @@ import TextBlock from "@/components/TextBlock.vue";
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 0 1vw 0 1vw;
 }
 
 .container {
@@ -52,7 +51,6 @@ import TextBlock from "@/components/TextBlock.vue";
 
 .actions-group {
   flex-direction: column;
-  padding: 30px;
   min-width: 250px;
 }
 
@@ -96,19 +94,17 @@ import TextBlock from "@/components/TextBlock.vue";
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 1500px) {
-  .container {
-    flex-direction: row;
-  }
+@media screen and (min-width: 1501px) {
 
   .introduction {
+    padding: 0 0 1vw 0;
     width: 50%;
     min-height: 40vh;
   }
 
   .actions-group {
-    width: 25%;
-    min-height: 35vh;
+    width: 35%;
+    min-height: 40vh;
   }
 
   .introduction h1
@@ -117,13 +113,10 @@ import TextBlock from "@/components/TextBlock.vue";
   }
 }
 
-@media screen and (max-width: 1501px) {
-  .container {
-    flex-direction: column;
-  }
+@media screen and (max-width: 1500px) {
 
   .introduction, .actions-group {
-    width: 95%;
+    width: 100%;
   }
 
   .introduction {
@@ -138,6 +131,21 @@ import TextBlock from "@/components/TextBlock.vue";
   {
     font-size: 3rem;
   }
+}
+
+@media screen and (min-width: 801px) {
+  .button {
+    width: 15vw;
+    min-width: 15vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .button {
+    width: 50vw;
+    min-width: 50vw;
+  }
+
 }
 
 </style>
