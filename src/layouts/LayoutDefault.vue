@@ -60,7 +60,7 @@ nav p {
 ::v-deep(nav .button) {
   font-size: calc(var(--font-size) * 0.8);
   background-color: var(--header-color);
-  border: solid 2px ;
+  border: solid 2px;
   height: fit-content;
 }
 

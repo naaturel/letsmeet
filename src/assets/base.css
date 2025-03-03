@@ -15,4 +15,5 @@
     text-decoration: none;
     font-family: 'Afacad Flux', sans-serif;
     transition: 0.3s all;
+    box-sizing: border-box;
 }
