@@ -126,6 +126,7 @@
   height: 100%;
   border: solid 1px;
   border-radius: 5px;
+  user-select: none;
 }
 
 .item:hover
