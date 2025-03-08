@@ -13,12 +13,11 @@
 .text-block {
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
-}
+  /*justify-content: start;*/
 
-.text-block {
-  justify-content: start;
   word-break: break-word;
   height: fit-content;
 
@@ -26,6 +25,7 @@
   border-left: solid 4px;
   background: rgb(239, 239, 239);
 }
+
 
 @media screen and (max-width: 1501px) {
   .text-block {
