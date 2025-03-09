@@ -1,8 +1,6 @@
 export class Calendar {
 
-  private year : number;
-  private month : number;
-  private monthsName : string[] = [
+  private readonly monthsName : string[] = [
     "January",
     "February",
     "March",
@@ -16,18 +14,24 @@ export class Calendar {
     "November",
     "December"
   ];
+  private year : number;
+  private month : number;
+  private day : number;
 
   public constructor() {
     let date = new Date();
     this.year = date.getFullYear();
     this.month = date.getMonth();
+    this.day = date.getDay();
   }
 
-  public getDate(){
-    return this.monthsName[this.month]  + " " + this.year;
+  public getDate(): Date {
+    return new Date(this.year, this.month, this.day);
   }
 
-  public datesOfToday(){
+  public setDay(day : number) { this.day = day; }
+
+  public datesOfCurrentMonth(){
     return this.datesOf();
   }
 
@@ -66,5 +70,9 @@ export class Calendar {
       dates.push(day);
     }
     return dates;
+  }
+
+  public toString(){
+    return this.monthsName[this.month]  + " " + this.year;
   }
 }

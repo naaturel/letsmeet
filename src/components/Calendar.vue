@@ -2,10 +2,12 @@
   import ArrowRight from "@/assets/arrow-right.svg"
   import ArrowLeft from "@/assets/arrow-left.svg";
 
-  import {ref, onMounted} from "vue";
-  import {Calendar} from "@/models/Calendar.ts";
+  import { ref, onMounted } from "vue";
+  import { datePickerStore } from "@/stores/CalendarStore.ts";
+  import { Calendar } from "@/models/Calendar.ts";
 
   const calendar = new Calendar();
+  const datePicker = datePickerStore();
 
   const monthYear = ref("");
   const dates = ref([] as (number | null)[]);
@@ -13,6 +15,18 @@
   onMounted(() => {
     setupCalendar();
   })
+
+  function setupCalendar(){
+    dates.value = calendar.datesOfCurrentMonth();
+    updateMonth();
+  }
+
+  function selectDay(event : Event, day : number | null){
+    if(!(event.target instanceof HTMLElement) || day == null) return;
+    event.target.classList.toggle("item-selected");
+    calendar.setDay(day);
+    datePicker.select(calendar.getDate());
+  }
 
   function clickPrev(){
     dates.value = calendar.datesOfPrevMonth();
@@ -24,13 +38,8 @@
     updateMonth();
   }
 
-  function setupCalendar(){
-    dates.value = calendar.datesOfToday();
-    updateMonth();
-  }
-
   function updateMonth(){
-    monthYear.value = calendar.getDate();
+    monthYear.value = calendar.toString();
   }
 
 </script>
@@ -56,7 +65,10 @@
     </div>
 
     <div class="day-picker">
-      <div v-for="(day, index) in dates" :key="day ?? `null-${index}`" :class="{'item': day !== null}">
+      <div v-on:click="selectDay($event, day)"
+           v-for  ="(day, index) in dates"
+           :id    ="day !== null ? `day-${index}` : undefined"
+           :class ="{'item': day !== null}">
         {{ day }}
       </div>
     </div>
@@ -129,10 +141,14 @@
   user-select: none;
 }
 
+.item-selected
+{
+  background-color: var(--secondary-color);
+}
+
 .item:hover
 {
   transform: scale(1.1);
-  background-color: var(--secondary-color);
 }
 
 </style>
