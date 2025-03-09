@@ -13,6 +13,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "express-requests-logger": "^4.0.2",
     "pinia": "^3.0.1",
     "vite-plugin-svgr": "^4.3.0",
     "vite-svg-loader": "^5.1.0",
