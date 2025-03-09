@@ -15,7 +15,7 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     svgLoader(),
-    requestLogger()
+    //requestLogger()
   ],
   resolve: {
     alias: {
