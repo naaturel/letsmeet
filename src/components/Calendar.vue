@@ -23,9 +23,9 @@
 
   function selectDay(event : Event, day : number | null){
     if(!(event.target instanceof HTMLElement) || day == null) return;
-    event.target.classList.toggle("item-selected");
     calendar.setDay(day);
     datePicker.select(calendar.getDate());
+    event.target.classList.toggle("item-selected");
   }
 
   function clickPrev(){
