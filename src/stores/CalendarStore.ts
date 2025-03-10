@@ -1,23 +1,14 @@
 import { defineStore } from 'pinia'
-import { ArrayHelper} from "@/helpers/ArrayHelper.ts";
+import {TimeStamp} from "@/models/TimeStamp.ts";
 
 export const datePickerStore = defineStore('datePicker', {
   state: () => {
-    return { dates: [] as number[] }
+    return { dates: [] as TimeStamp[] }
   },
   actions: {
-    select(date : Date) {
-      toggleElement(this.dates, date.getTime());
+    update(dates : Date[]) {
+      this.dates = dates.map(date => new TimeStamp(date));
       console.log(this.dates);
     },
   },
 })
-
-function toggleElement(arr : any[], element:any) : void {
-  let index = ArrayHelper.indexOf(arr, element);
-  if (index < 0) {
-    arr.push(element);
-  } else {
-    arr.splice(index, 1);
-  }
-}

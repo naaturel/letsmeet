@@ -29,6 +29,10 @@ export class Calendar {
     return new Date(this.year, this.month, this.day);
   }
 
+  public getMonthYear(){
+    return `${this.monthsName[this.month]} ${this.year}`;
+  }
+
   public setDay(day : number) { this.day = day; }
 
   public datesOfCurrentMonth(){
@@ -73,6 +77,6 @@ export class Calendar {
   }
 
   public toString(){
-    return this.monthsName[this.month]  + " " + this.year;
+    return `${this.day}-${this.monthsName[this.month]}-${this.year}`
   }
 }

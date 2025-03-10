@@ -1,31 +1,47 @@
 <script setup lang="ts">
   import ArrowRight from "@/assets/arrow-right.svg"
   import ArrowLeft from "@/assets/arrow-left.svg";
-
-  import { ref, onMounted } from "vue";
+  import {ref, onMounted, watch} from "vue";
   import { datePickerStore } from "@/stores/CalendarStore.ts";
   import { Calendar } from "@/models/Calendar.ts";
 
   const calendar = new Calendar();
   const datePicker = datePickerStore();
-
   const monthYear = ref("");
   const dates = ref([] as (number | null)[]);
+  const selectedDays = ref(new Map<string, Date>());
 
   onMounted(() => {
     setupCalendar();
   })
 
-  function setupCalendar(){
-    dates.value = calendar.datesOfCurrentMonth();
-    updateMonth();
-  }
+  watch(selectedDays, (newValue) => {
+    let dates = Array.from(selectedDays.value.values())
+    datePicker.update(dates);
+  }, { deep: true });
 
   function selectDay(event : Event, day : number | null){
     if(!(event.target instanceof HTMLElement) || day == null) return;
     calendar.setDay(day);
-    datePicker.select(calendar.getDate());
-    event.target.classList.toggle("item-selected");
+    toggleSelectedDay(event.target.id,  calendar.getDate());
+    highlightSelectedDay(event.target);
+  }
+
+  function toggleSelectedDay(id : string, date : Date) : void {
+    if(selectedDays.value.has(id)){
+      selectedDays.value.delete(id);
+    } else {
+      selectedDays.value.set(id, date);
+    }
+  }
+
+  function highlightSelectedDay(element : HTMLElement){
+    element.classList.toggle("item-selected");
+  }
+
+  function setupCalendar(){
+    dates.value = calendar.datesOfCurrentMonth();
+    updateMonth();
   }
 
   function clickPrev(){
@@ -39,7 +55,7 @@
   }
 
   function updateMonth(){
-    monthYear.value = calendar.toString();
+    monthYear.value = calendar.getMonthYear();
   }
 
 </script>
@@ -64,11 +80,16 @@
       <div>S</div>
     </div>
 
+    <!--Elements are not recreated ? Does only the id change ? -->
+    <!--Keep track of all selected ids and update view when month is update ? -->
     <div class="day-picker">
       <div v-on:click="selectDay($event, day)"
-           v-for  ="(day, index) in dates"
-           :id    ="day !== null ? `day-${index}` : undefined"
-           :class ="{'item': day !== null}">
+           v-for  ="(day) in dates"
+           :id    ="day !== null ? `${day}-${monthYear}` : undefined"
+           :class ="{
+             'item': day !== null,
+             'item-selected' : selectedDays.has(`${day}-${monthYear}`)
+           }">
         {{ day }}
       </div>
     </div>
