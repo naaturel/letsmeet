@@ -9,6 +9,9 @@ export const datePickerStore = defineStore('datePicker', {
     value: (state) : TimeStamp[] => state.dates as TimeStamp[],
   },
   actions: {
+    getValue(){
+      return this.dates;
+    },
     update(dates : Date[]) : void {
       this.dates = dates.map(date => new TimeStamp(date));
     },

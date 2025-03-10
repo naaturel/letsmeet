@@ -17,7 +17,7 @@
   })
 
   watch(selectedDays, (newValue) => {
-    let dates = Array.from(selectedDays.value.values())
+    let dates = Array.from(newValue.values())
     datePicker.update(dates);
   }, { deep: true });
 
@@ -26,19 +26,6 @@
     calendar.setDay(day);
     toggleSelectedDay(event.target.id,  calendar.getDate());
     highlightSelectedDay(event.target);
-    checkConsistency();
-  }
-
-  function checkConsistency(){
-
-    let selected = selectedDays.value;
-    let stored = datePicker.value;
-
-    if(selected.size != stored.length){
-      datePicker.clear();
-      selected.clear();
-      router.push('/error')
-    }
   }
 
   function toggleSelectedDay(id : string, date : Date) : void {
