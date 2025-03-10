@@ -12,6 +12,7 @@ const router = createRouter({
     { path: '/about',  name: 'about',  component: AboutView},
     { path: '/create', name: 'create', component: CreateView},
     { path: '/join',   name: 'join',   component: JoinView},
+    { path: '/error',  name: 'error',  component: ErrorView},
     { path: '/:pathMatch(.*)*',        component: ErrorView }
   ]
 })

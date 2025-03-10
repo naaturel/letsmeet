@@ -4,6 +4,7 @@
   import {ref, onMounted, watch} from "vue";
   import { datePickerStore } from "@/stores/CalendarStore.ts";
   import { Calendar } from "@/models/Calendar.ts";
+  import router from "@/router";
 
   const calendar = new Calendar();
   const datePicker = datePickerStore();
@@ -25,6 +26,19 @@
     calendar.setDay(day);
     toggleSelectedDay(event.target.id,  calendar.getDate());
     highlightSelectedDay(event.target);
+    checkConsistency();
+  }
+
+  function checkConsistency(){
+
+    let selected = selectedDays.value;
+    let stored = datePicker.value;
+
+    if(selected.size != stored.length){
+      datePicker.clear();
+      selected.clear();
+      router.push('/error')
+    }
   }
 
   function toggleSelectedDay(id : string, date : Date) : void {
