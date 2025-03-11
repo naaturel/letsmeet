@@ -15,7 +15,7 @@ RUN gradle clean build
 
 # actual container
 FROM eclipse-temurin:21-jdk
-ENV ARTIFACT_NAME=unluckiest-1.0.0.jar
+ENV ARTIFACT_NAME=letsmeet-1.0.0.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
