@@ -2,7 +2,7 @@ volumes:
   letsmeet_database:
 
 networks:
-  letsmeet_database:
+  letsmeet_network:
     driver: bridge
 
 services:
