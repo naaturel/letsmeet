@@ -8,6 +8,7 @@ networks:
 services:
 
   database:
+    container_name: letsmeet_database
     build:
       context : ./database
       dockerfile : Dockerfile
@@ -28,7 +29,7 @@ services:
       retries: 3
 
   api:
-    container_name: api
+    container_name: letsmeet_api
     build:
       context: ./back
       dockerfile: Dockerfile
@@ -45,7 +46,7 @@ services:
         condition: service_healthy
 
   webapp:
-    container_name : webapp
+    container_name : letsmeet_webapp
     build:
       context: ./front
       dockerfile: Dockerfile
