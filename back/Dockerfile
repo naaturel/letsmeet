@@ -1,5 +1,5 @@
 # temp container to build using gradle
-FROM gradle8.10.2-jdk21 AS TEMP_BUILD_IMAGE
+FROM gradle:8.10.2-jdk21 AS TEMP_BUILD_IMAGE
 ENV APP_HOME=usrapp
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle $APP_HOME
@@ -14,7 +14,7 @@ COPY . .
 RUN gradle clean build
 
 # actual container
-FROM eclipse-temurin21-jdk
+FROM eclipse-temurin:21-jdk
 ENV ARTIFACT_NAME=unluckiest-1.0.0.jar
 ENV APP_HOME=usrapp
 
