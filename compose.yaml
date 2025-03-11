@@ -1,0 +1,53 @@
+volumes:
+  letsmeet_database:
+
+networks:
+  letsmeet_database:
+    driver: bridge
+
+services:
+
+  database:
+    build:
+      context : ./database
+      dockerfile : Dockerfile
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - DB_NAME=letsmeet_db
+      - DB_USER=letsmeet_user
+      - DB_PASSWORD=
+    volumes:
+      - letsmeet_database:/var/lib/mysql
+    networks:
+      - letsmeet_network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 15s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  api:
+    container_name: api
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    environment:
+      DB_URL: mysql://database:3306/letsmeet_db
+      DB_USER: letsmeet_user
+      DB_PASSWORD:
+    networks:
+      - letsmeet_network
+    depends_on:
+      database:
+        condition: service_healthy
+
+  webapp:
+    container_name : webapp
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    networks:
+      - letsmeet_network
+    depends_on:
+      - api
