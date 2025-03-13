@@ -1,7 +1,11 @@
 package be.naaturel.letsmeet.models;
 
+
 public class Date {
 
-    private long timestamp;
+    public long timeStamp;
 
+    public Date(long timeStamp){
+        this.timeStamp = timeStamp;
+    }
 }

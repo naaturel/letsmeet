@@ -17,6 +17,7 @@ public class EventController {
 
     @PostMapping({"/create", "/create/"})
     public ResponseEntity<?> submit(@RequestBody Event e){
+
         return ResponseEntity.ok().build();
     }
 

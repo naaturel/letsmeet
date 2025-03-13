@@ -6,15 +6,12 @@ import java.util.Set;
 
 import static jakarta.persistence.CascadeType.ALL;
 
-@Entity(name = "Date")
+@Entity(name = "Dates")
 public class DateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     public String id;
-
-    @Column
-    public String name;
 
     @Column
     public long timeStamp;

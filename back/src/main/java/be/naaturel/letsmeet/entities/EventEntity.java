@@ -6,12 +6,15 @@ import java.util.Set;
 
 import static jakarta.persistence.CascadeType.ALL;
 
-@Entity(name = "Event")
+@Entity(name = "Events")
 public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     public String id;
+
+    @Column
+    public String name;
 
     @Column
     @OneToMany(targetEntity= DateEntity.class, cascade=ALL, mappedBy="event")

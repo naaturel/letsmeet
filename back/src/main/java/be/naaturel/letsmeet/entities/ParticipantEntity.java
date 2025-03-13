@@ -2,7 +2,7 @@ package be.naaturel.letsmeet.entities;
 
 import jakarta.persistence.*;
 
-@Entity(name = "Participant")
+@Entity(name = "Participants")
 public class ParticipantEntity {
 
     @Id

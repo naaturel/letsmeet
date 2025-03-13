@@ -15,8 +15,8 @@ services:
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - DB_NAME=letsmeet_db
-      - DB_USER=letsmeet_user
-      - DB_PASSWORD=vklbzvkzbkeibv
+      - DB_USER=
+      - DB_PASSWORD=
     volumes:
       - letsmeet_database:/var/lib/mysql
     networks:
@@ -35,8 +35,8 @@ services:
       dockerfile: Dockerfile
     environment:
       DB_URL: mysql://database:3306/letsmeet_db
-      DB_USER: letsmeet_user
-      DB_PASSWORD: vklbzvkzbkeibv
+      DB_USER: 
+      DB_PASSWORD:
     ports:
       - "5001:5001"
     networks:
