@@ -20,7 +20,7 @@ public class EventMapper implements Mapper<Event, EventEntity> {
     public EventEntity toEntity(Event event) {
         EventEntity ee = new EventEntity();
         ee.name = event.getName();
-        ee.timeStamps = dateMapper.toEntities(event.getDates(), HashSet::new);
+        ee.dates = dateMapper.toEntities(event.getDates(), HashSet::new);
         return ee;
     }
 
@@ -31,12 +31,16 @@ public class EventMapper implements Mapper<Event, EventEntity> {
 
     @Override
     public <C extends Collection<EventEntity>> C toEntities(Collection<Event> events, Supplier<C> collectionSupplier) {
-        return null;
+        C result = collectionSupplier.get();
+        events.forEach(e -> result.add(toEntity(e)));
+        return result;
     }
 
     @Override
     public <C extends Collection<Event>> C toModels(Collection<EventEntity> eventEntities, Supplier<C> collectionSupplier) {
-        return null;
+        C result = collectionSupplier.get();
+        eventEntities.forEach(e -> result.add(toModel(e)));
+        return result;
     }
 
 }

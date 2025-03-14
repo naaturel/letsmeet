@@ -18,6 +18,6 @@ public class EventEntity {
 
     @Column
     @OneToMany(targetEntity= DateEntity.class, cascade=ALL, mappedBy="event")
-    public Set<DateEntity> timeStamps;
+    public Set<DateEntity> dates;
 
 }
