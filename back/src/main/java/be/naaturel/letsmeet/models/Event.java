@@ -5,18 +5,9 @@ import java.util.*;
 public class Event {
 
     private String name;
-    private Map<Date, Set<Participant>> participants;
+    private Set<Participant> participants;
 
-    public Event(String name){
-        this(name, new HashMap<>());
-    }
-
-    public Event(String name, Set<Date> dates, Set<Participant> participants){
-        this.name = name;
-        this.participants = new HashMap<>();
-    }
-
-    public Event(String name, Map<Date, Set<Participant>> participants){
+    public Event(String name, Set<Participant> participants){
         this.name = name;
         this.participants = participants;
     }
@@ -25,7 +16,15 @@ public class Event {
         return name;
     }
 
-    public Set<Date> getDates() {
-        return this.participants.keySet();
+    public Set<Participant> getParticipants(){
+        return new HashSet<>(this.participants);
+    }
+
+    public Set<EventDate> getDates() {
+        Set<EventDate> dates = new HashSet<>();
+        for (Participant p : this.participants) {
+            dates.addAll(p.getDates());
+        }
+        return dates;
     }
 }

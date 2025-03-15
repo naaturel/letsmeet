@@ -1,7 +1,8 @@
 package be.naaturel.letsmeet.mappers;
 
-import be.naaturel.letsmeet.entities.DateEntity;
-import be.naaturel.letsmeet.models.Date;
+import be.naaturel.letsmeet.dto.database.EventDateEntity;
+import be.naaturel.letsmeet.mappers.database.EventDateMapper;
+import be.naaturel.letsmeet.models.EventDate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -12,43 +13,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateMapperTest {
 
-    private static final Mapper<Date, DateEntity> mapper = new DateMapper();
-    private static final Date model = new Date(0);
-    private static final Set<Date> models = Set.of(new Date(0), new Date(1), new Date(2));
-    private static final DateEntity entity = new DateEntity();
-    private static final Set<DateEntity> entities = new HashSet<>();
+    private static final Mapper<EventDate, EventDateEntity> mapper = new EventDateMapper();
+    private static final EventDate model = new EventDate(0);
+    private static final Set<EventDate> models = Set.of(new EventDate(0), new EventDate(1), new EventDate(2));
+    private static final EventDateEntity entity = new EventDateEntity();
+    private static final Set<EventDateEntity> entities = new HashSet<>();
 
     @BeforeAll
     static void setup(){
-        entity.id = "BLA BLA BLA FAKE ID";
         entity.timeStamp = 0;
 
-        entities.add(new DateEntity());
-        entities.add(new DateEntity());
-        entities.add(new DateEntity());
+        entities.add(new EventDateEntity());
+        entities.add(new EventDateEntity());
+        entities.add(new EventDateEntity());
     }
 
     @Test
     void single_model_to_entity() {
-        DateEntity converted = mapper.toEntity(model);
-        assertEquals(converted.timeStamp, model.timeStamp);
+        EventDateEntity converted = mapper.toEntity(model);
+        assertEquals(converted.timeStamp, model.getTimeStamp());
     }
 
     @Test
     void single_entity_to_model() {
-        Date converted = mapper.toModel(entity);
-        assertEquals(converted.timeStamp, model.timeStamp);
+        EventDate converted = mapper.toModel(entity);
+        assertEquals(converted.getTimeStamp(), entity.timeStamp);
     }
 
     @Test
     void multiple_entities_to_models() {
-        Set<Date> dates = mapper.toModels(entities, HashSet::new);
+        Set<EventDate> dates = mapper.toModels(entities, HashSet::new);
         assertEquals(dates.size(), entities.size());
     }
 
     @Test
     void multiple_models_to_entities() {
-        Set<DateEntity> dates = mapper.toEntities(models, HashSet::new);
+        Set<EventDateEntity> dates = mapper.toEntities(models, HashSet::new);
         assertEquals(dates.size(), models.size());
     }
 
