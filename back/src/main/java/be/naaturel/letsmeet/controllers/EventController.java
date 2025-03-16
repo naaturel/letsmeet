@@ -1,5 +1,6 @@
 package be.naaturel.letsmeet.controllers;
 
+import be.naaturel.letsmeet.core.Result;
 import be.naaturel.letsmeet.dto.httpRequest.EventDTO;
 import be.naaturel.letsmeet.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +27,20 @@ public class EventController {
         } catch (Exception e){
             return ResponseEntity
                     .internalServerError()
-                    .build();
+                    .body("An error has occured : " + e.getMessage());
         }
     }
 
     @PostMapping({"/create", "/create/"})
     public ResponseEntity<?> create(@RequestBody EventDTO dto){
 
-        try{
-            service.save(dto);
+        try {
+            Result<String> res = service.save(dto);
+            return ResponseEntity.ok(res);
         } catch (Exception e){
             return ResponseEntity
                     .internalServerError()
-                    .build();
+                    .body("An error has occured : " + e.getMessage());
         }
-
-        return ResponseEntity.ok().build();
     }
 }

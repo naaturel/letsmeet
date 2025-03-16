@@ -1,5 +1,6 @@
 package be.naaturel.letsmeet.services;
 
+import be.naaturel.letsmeet.core.Result;
 import be.naaturel.letsmeet.mappers.Mapper;
 
 public abstract class AbstractService<T, T_ENTITY, T_DTO> {
@@ -12,7 +13,7 @@ public abstract class AbstractService<T, T_ENTITY, T_DTO> {
         this.requestMapper = requestMapper;
     }
 
-    public abstract boolean save(T_DTO prop);
+    public abstract Result<?> save(T_DTO prop) throws Exception;
     public abstract boolean delete(T_DTO prop);
 
 

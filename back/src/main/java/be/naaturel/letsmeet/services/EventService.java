@@ -1,5 +1,6 @@
 package be.naaturel.letsmeet.services;
 
+import be.naaturel.letsmeet.core.Result;
 import be.naaturel.letsmeet.dto.database.EventEntity;
 import be.naaturel.letsmeet.dto.httpRequest.EventDTO;
 import be.naaturel.letsmeet.mappers.database.EventMapper;
@@ -22,16 +23,14 @@ public class EventService extends AbstractService<Event, EventEntity, EventDTO> 
     }
 
     @Override
-    public boolean save(EventDTO dto) {
+    public Result<String> save(EventDTO dto) throws Exception {
         Event event = this.requestMapper.toModel(dto);
         EventEntity entity = this.dataBaseMapper.toEntity(event);
         try{
             this.repo.save(entity);
-            return true;
-        } catch (IllegalArgumentException iae){
-            return false;
-        } catch (OptimisticLockingFailureException olfe){
-            return false;
+            return new Result<>(entity.token);
+        } catch (Exception e) {
+            throw new Exception("Something went wrong");
         }
     }
 
