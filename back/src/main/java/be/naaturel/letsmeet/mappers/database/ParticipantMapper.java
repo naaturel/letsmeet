@@ -23,15 +23,11 @@ public class ParticipantMapper implements Mapper<Participant, ParticipantEntity>
     @Override
     public ParticipantEntity toEntity(Participant d) {
         return DatabasePropsFactory.createParticipant(d.getName(), dateMapper.toEntities(d.getDates(), HashSet::new));
-        /*ParticipantEntity pe = new ParticipantEntity();
-        pe.name = d.getName();
-        pe.dates = dateMapper.toEntities(d.getDates(), HashSet::new);
-        return pe;*/
     }
 
     @Override
     public Participant toModel(ParticipantEntity d) {
-        return new Participant(d.name);
+        return new Participant(d.name, dateMapper.toModels(d.dates, HashSet::new));
     }
 
     @Override

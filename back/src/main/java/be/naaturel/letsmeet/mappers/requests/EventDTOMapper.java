@@ -19,7 +19,7 @@ public class EventDTOMapper implements Mapper<Event, EventDTO> {
         EventDTO eventDTO = new EventDTO();
         eventDTO.name = event.getName();
         eventDTO.participants = participantMapper.toEntities(event.getParticipants(), HashSet::new);
-        return new EventDTO();
+        return eventDTO;
     }
 
     @Override

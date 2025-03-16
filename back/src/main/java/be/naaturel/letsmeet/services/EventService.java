@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventService extends AbstractService<Event, EventEntity, EventDTO> {
 
+    protected EventRepo repo;
+
     @Autowired
     public EventService(EventRepo eventRepo){
-        super(eventRepo, new EventMapper(), new EventDTOMapper());
+        super(new EventMapper(), new EventDTOMapper());
+        this.repo = eventRepo;
     }
 
     @Override
@@ -46,4 +49,14 @@ public class EventService extends AbstractService<Event, EventEntity, EventDTO> 
         }
     }
 
+    public EventDTO getEvent(String token){
+        try{
+            EventEntity entity = this.repo.findEventEntityByToken(token);
+            Event model = dataBaseMapper.toModel(entity);
+            EventDTO dto = requestMapper.toEntity(model);
+            return dto;
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

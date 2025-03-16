@@ -4,10 +4,7 @@ import be.naaturel.letsmeet.dto.httpRequest.EventDTO;
 import be.naaturel.letsmeet.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class EventController {
@@ -19,8 +16,22 @@ public class EventController {
         this.service = service;
     }
 
+
+    @GetMapping({"/event", "/event/{token}"})
+    public ResponseEntity<?> get(@PathVariable String token){
+
+        try{
+            EventDTO dto = service.getEvent(token);
+            return ResponseEntity.ok(dto);
+        } catch (Exception e){
+            return ResponseEntity
+                    .internalServerError()
+                    .build();
+        }
+    }
+
     @PostMapping({"/create", "/create/"})
-    public ResponseEntity<?> submit(@RequestBody EventDTO dto){
+    public ResponseEntity<?> create(@RequestBody EventDTO dto){
 
         try{
             service.save(dto);
@@ -32,10 +43,4 @@ public class EventController {
 
         return ResponseEntity.ok().build();
     }
-
-    @GetMapping({"/join", "/join/"})
-    public ResponseEntity<?> leaderboard(){
-        return ResponseEntity.ok().build();
-    }
-
 }
