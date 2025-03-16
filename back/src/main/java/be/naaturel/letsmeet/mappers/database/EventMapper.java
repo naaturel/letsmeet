@@ -4,8 +4,8 @@ import be.naaturel.letsmeet.dto.database.EventEntity;
 import be.naaturel.letsmeet.dto.database.ParticipantEntity;
 import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
 import be.naaturel.letsmeet.mappers.Mapper;
-import be.naaturel.letsmeet.models.Event;
-import be.naaturel.letsmeet.models.Participant;
+import be.naaturel.letsmeet.core.models.Event;
+import be.naaturel.letsmeet.core.models.Participant;
 
 import java.util.*;
 import java.util.function.Supplier;

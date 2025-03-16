@@ -1,7 +1,5 @@
 package be.naaturel.letsmeet.dto.httpRequest;
 
-import be.naaturel.letsmeet.models.EventDate;
-
 import java.util.Objects;
 
 public class EventDateDTO {

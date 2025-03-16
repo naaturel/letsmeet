@@ -1,6 +1,5 @@
 package be.naaturel.letsmeet.dto.database;
 
-import be.naaturel.letsmeet.models.EventDate;
 import jakarta.persistence.*;
 
 import java.util.Objects;

@@ -3,7 +3,7 @@ package be.naaturel.letsmeet.mappers.database;
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
 import be.naaturel.letsmeet.mappers.Mapper;
-import be.naaturel.letsmeet.models.EventDate;
+import be.naaturel.letsmeet.core.models.EventDate;
 
 import java.util.Collection;
 import java.util.function.Supplier;

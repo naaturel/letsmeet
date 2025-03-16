@@ -1,15 +1,5 @@
 package be.naaturel.letsmeet.mappers;
 
-import be.naaturel.letsmeet.dto.database.EventDateEntity;
-import be.naaturel.letsmeet.dto.database.EventEntity;
-import be.naaturel.letsmeet.mappers.database.EventMapper;
-import be.naaturel.letsmeet.models.EventDate;
-import be.naaturel.letsmeet.models.Event;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EventMapperTest {

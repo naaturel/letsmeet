@@ -1,7 +1,5 @@
 package be.naaturel.letsmeet.dto.database;
 
-import be.naaturel.letsmeet.models.EventDate;
-import be.naaturel.letsmeet.models.Participant;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -15,6 +13,9 @@ public class EventEntity {
 
     @Column
     public String name;
+
+    @Column(unique = true)
+    public String token;
 
     @Column
     @OneToMany(targetEntity=EventDateEntity.class, cascade=CascadeType.ALL, mappedBy="event")

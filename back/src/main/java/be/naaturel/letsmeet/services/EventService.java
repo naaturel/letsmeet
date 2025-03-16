@@ -1,11 +1,10 @@
 package be.naaturel.letsmeet.services;
 
-import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.dto.database.EventEntity;
 import be.naaturel.letsmeet.dto.httpRequest.EventDTO;
 import be.naaturel.letsmeet.mappers.database.EventMapper;
 import be.naaturel.letsmeet.mappers.requests.EventDTOMapper;
-import be.naaturel.letsmeet.models.Event;
+import be.naaturel.letsmeet.core.models.Event;
 import be.naaturel.letsmeet.repositories.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;

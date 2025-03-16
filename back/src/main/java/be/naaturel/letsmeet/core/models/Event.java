@@ -1,4 +1,4 @@
-package be.naaturel.letsmeet.models;
+package be.naaturel.letsmeet.core.models;
 
 import java.util.*;
 

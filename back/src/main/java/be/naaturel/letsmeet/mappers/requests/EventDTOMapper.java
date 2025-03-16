@@ -3,8 +3,8 @@ package be.naaturel.letsmeet.mappers.requests;
 import be.naaturel.letsmeet.dto.httpRequest.EventDTO;
 import be.naaturel.letsmeet.dto.httpRequest.ParticipantDTO;
 import be.naaturel.letsmeet.mappers.Mapper;
-import be.naaturel.letsmeet.models.Event;
-import be.naaturel.letsmeet.models.Participant;
+import be.naaturel.letsmeet.core.models.Event;
+import be.naaturel.letsmeet.core.models.Participant;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -1,5 +1,6 @@
 package be.naaturel.letsmeet.dto.database.factories;
 
+import be.naaturel.letsmeet.core.helpers.TokenGenerator;
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.dto.database.EventEntity;
 import be.naaturel.letsmeet.dto.database.ParticipantEntity;
@@ -13,6 +14,7 @@ public class DatabasePropsFactory {
 
         EventEntity entity = new EventEntity();
         entity.name = name;
+        entity.token = TokenGenerator.generate();
         entity.participants = participants;
         entity.dates = new HashSet<>();
         for (ParticipantEntity pe : entity.participants) {

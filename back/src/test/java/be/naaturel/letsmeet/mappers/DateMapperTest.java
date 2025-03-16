@@ -2,7 +2,7 @@ package be.naaturel.letsmeet.mappers;
 
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.mappers.database.EventDateMapper;
-import be.naaturel.letsmeet.models.EventDate;
+import be.naaturel.letsmeet.core.models.EventDate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
