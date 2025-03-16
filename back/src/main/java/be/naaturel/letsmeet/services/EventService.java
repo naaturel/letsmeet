@@ -23,7 +23,6 @@ public class EventService extends AbstractService<Event, EventEntity, EventDTO> 
     public boolean save(EventDTO dto) {
         Event event = this.requestMapper.toModel(dto);
         EventEntity entity = this.dataBaseMapper.toEntity(event);
-        entity.prepareForSave();
         try{
             this.repo.save(entity);
             return true;

@@ -1,6 +1,7 @@
 package be.naaturel.letsmeet.mappers.database;
 
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
+import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
 import be.naaturel.letsmeet.mappers.Mapper;
 import be.naaturel.letsmeet.models.EventDate;
 
@@ -12,9 +13,7 @@ public class EventDateMapper implements Mapper<EventDate, EventDateEntity> {
 
     @Override
     public EventDateEntity toEntity(EventDate d) {
-        EventDateEntity de = new EventDateEntity();
-        de.timeStamp = d.getTimeStamp();
-        return de;
+        return DatabasePropsFactory.createDate(d.getTimeStamp());
     }
 
     @Override

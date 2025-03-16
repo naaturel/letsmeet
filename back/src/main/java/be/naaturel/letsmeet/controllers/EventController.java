@@ -25,7 +25,9 @@ public class EventController {
         try{
             service.save(dto);
         } catch (Exception e){
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity
+                    .internalServerError()
+                    .build();
         }
 
         return ResponseEntity.ok().build();

@@ -2,6 +2,7 @@ package be.naaturel.letsmeet.mappers.database;
 
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.dto.database.ParticipantEntity;
+import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
 import be.naaturel.letsmeet.mappers.Mapper;
 import be.naaturel.letsmeet.models.EventDate;
 import be.naaturel.letsmeet.models.Participant;
@@ -21,10 +22,11 @@ public class ParticipantMapper implements Mapper<Participant, ParticipantEntity>
 
     @Override
     public ParticipantEntity toEntity(Participant d) {
-        ParticipantEntity pe = new ParticipantEntity();
+        return DatabasePropsFactory.createParticipant(d.getName(), dateMapper.toEntities(d.getDates(), HashSet::new));
+        /*ParticipantEntity pe = new ParticipantEntity();
         pe.name = d.getName();
         pe.dates = dateMapper.toEntities(d.getDates(), HashSet::new);
-        return pe;
+        return pe;*/
     }
 
     @Override

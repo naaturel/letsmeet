@@ -24,25 +24,19 @@ public class EventEntity {
     @OneToMany(targetEntity=ParticipantEntity.class, cascade=CascadeType.ALL, mappedBy="event")
     public Set<ParticipantEntity> participants;
 
-    public void prepareForSave(){
-        linkDates();
-        linkParticipants();
-        removeDuplicatedDates();
-    }
-
-    private void linkDates(){
+    public void linkDates(){
         for (EventDateEntity date : this.dates) {
             date.event = this;
         }
     }
 
-    private void linkParticipants(){
+    public void linkParticipants(){
         for (ParticipantEntity participant : this.participants) {
             participant.event = this;
         }
     }
 
-    private void removeDuplicatedDates(){
+    public void removeDuplicatedDates(){
 
         for (EventDateEntity ede: dates) {
             for (ParticipantEntity pe : participants) {
