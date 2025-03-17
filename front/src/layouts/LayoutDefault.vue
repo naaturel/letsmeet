@@ -64,7 +64,7 @@ nav p {
   height: fit-content;
 }
 
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 1001px) {
 
   ::v-deep(nav .button) {
     width: 5vw;
@@ -74,7 +74,7 @@ nav p {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 
   ::v-deep(nav .button) {
     width: 7vw;

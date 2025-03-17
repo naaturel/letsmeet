@@ -4,10 +4,12 @@ import TextBlock from "@/components/TextBlock.vue";
 </script>
 
 <template>
-  <TextBlock>
-    <h1>Oopsie</h1>
-    <p>Something went wrong</p>
-  </TextBlock>
+  <div class="container">
+    <TextBlock>
+      <h1>Oopsie</h1>
+      <p>Something went wrong</p>
+    </TextBlock>
+  </div>
 
 </template>
 
@@ -15,8 +17,6 @@ import TextBlock from "@/components/TextBlock.vue";
 
 .text-block {
   border-left: solid 4px red;
-  width: 35%;
-  height: 35%;
 }
 
 </style>

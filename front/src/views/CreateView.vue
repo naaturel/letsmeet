@@ -35,7 +35,7 @@ import NavLink from "@/components/NavLink.vue";
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 1001px) {
 
   .title {
     width: 50%;
@@ -52,7 +52,7 @@ import NavLink from "@/components/NavLink.vue";
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 
   .title, .event-form {
     width: 100%;

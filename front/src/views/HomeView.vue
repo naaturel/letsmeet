@@ -40,7 +40,6 @@ import TextBlock from "@/components/TextBlock.vue";
 
 .introduction p
 {
-  width: 80%;
   text-align: justify;
 }
 
@@ -67,13 +66,13 @@ import TextBlock from "@/components/TextBlock.vue";
 .actions-group::after {
   content: "";
   position: absolute;
-  width: 5%;
-  height: 15%;
+  width: 50px;
+  height: 50px;
   border: 4px solid black;
 }
 
 .actions-group::before {
-  top: 0;
+  top: -20px;
   left: 0;
   border-radius: var(--radius);
   border-right: none;
@@ -81,13 +80,12 @@ import TextBlock from "@/components/TextBlock.vue";
 }
 
 .actions-group::after {
-  bottom: 0;
+  bottom: -20px;
   right: 0;
   border-radius: var(--radius);
   border-left: none;
   border-top: none;
 }
-
 
 .button {
   width: 50%;
@@ -95,46 +93,46 @@ import TextBlock from "@/components/TextBlock.vue";
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 801px) {
-
-  .introduction {
-    padding: 0 0 1vw 0;
-    width: 50%;
-    min-height: 40vh;
-  }
+@media screen and (min-width: 1001px) {
 
   .actions-group {
     width: 35%;
-    min-height: 40vh;
+  }
+
+  .introduction p
+  {
+    width: 90%;
+    margin-bottom: 0;
   }
 
   .introduction h1
   {
     font-size: 4rem;
-    margin-bottom: 5px;
+    margin: 0 5px 5px 5px;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 
   .introduction, .actions-group {
     width: 100%;
-  }
-
-  .introduction {
-    height: 60%;
   }
 
   .actions-group {
     height: 40%;
   }
 
+  .introduction p
+  {
+    width: 95%;
+    margin-bottom: 0;
+  }
+
   .introduction h1
   {
     font-size: 2.5rem;
-    margin: 5px;
+    margin: 0 5px 5px 5px;
   }
 }
-
 
 </style>
