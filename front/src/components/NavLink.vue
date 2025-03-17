@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import Button from "@/components/Button.vue";
+
 const props = defineProps<{
   path: string;
   description: string;
@@ -8,27 +10,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <router-link :to=path><div class="button">{{ description }}</div></router-link>
+  <router-link :to=path>
+    <Button :description="description"/>
+  </router-link>
 </template>
 
 <style scoped>
-
-.button {
-  color: var(--primary-color);
-  text-align: center;
-  align-content: center;
-
-  border-radius: var(--radius);
-  background-color: var(--secondary-color);
-  word-break: break-word;
-  min-height: 7vh;
-}
-
-.button:hover
-{
-  transform: scale(1.1);
-  background-color: var(--header-color);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
 
 </style>

@@ -31,16 +31,11 @@ import TextBlock from "@/components/TextBlock.vue";
 
 <style scoped>
 
-.container, .actions-group {
+.actions-group {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.container {
-  width: 80%;
-  gap: 10vw;
 }
 
 .introduction p
@@ -93,8 +88,14 @@ import TextBlock from "@/components/TextBlock.vue";
   border-top: none;
 }
 
+
+.button {
+  width: 50%;
+  min-width: 50%;
+}
+
 /* MEDIA QUERIES */
-@media screen and (min-width: 1501px) {
+@media screen and (min-width: 801px) {
 
   .introduction {
     padding: 0 0 1vw 0;
@@ -110,42 +111,30 @@ import TextBlock from "@/components/TextBlock.vue";
   .introduction h1
   {
     font-size: 4rem;
+    margin-bottom: 5px;
   }
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 800px) {
 
   .introduction, .actions-group {
     width: 100%;
   }
 
   .introduction {
-    min-height: 25vh;
+    height: 60%;
   }
 
   .actions-group {
-    min-height: 40vh;
+    height: 40%;
   }
 
   .introduction h1
   {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin: 5px;
   }
 }
 
-@media screen and (min-width: 801px) {
-  .button {
-    width: 15vw;
-    min-width: 15vw;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .button {
-    width: 50vw;
-    min-width: 50vw;
-  }
-
-}
 
 </style>

@@ -27,13 +27,13 @@
 }
 
 
-@media screen and (max-width: 1501px) {
+@media screen and (max-width: 800px) {
   .text-block {
     padding: 5px 15px 5px 15px;
   }
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 801px) {
   .text-block {
     padding: 10px 30px 10px 30px;
   }
