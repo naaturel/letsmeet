@@ -2,12 +2,13 @@
 
   const props = defineProps<{
     description: string;
+    action?: Function;
   }>();
 
 </script>
 
 <template>
-  <div class="button">{{ description }}</div>
+  <div @click="action ? action : null" class="button">{{ description }}</div>
 </template>
 
 <style scoped>

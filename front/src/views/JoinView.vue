@@ -3,6 +3,15 @@
 import TextBlock from "@/components/TextBlock.vue";
 import Button from "@/components/Button.vue";
 import InputField from "@/components/InputField.vue";
+import { eventStore } from "@/stores/EventStore.ts";
+
+let token : string = '';
+const event = eventStore();
+
+function fetch(){
+  event.fetch(token);
+}
+
 </script>
 
 <template>
@@ -14,8 +23,8 @@ import InputField from "@/components/InputField.vue";
 
     <div class="actions-group">
       <h1>Event <span class="colored-text">code</span></h1>
-      <InputField/>
-      <Button description="Go for it !"/>
+      <InputField @update:value="(newValue) => {token = newValue}" />
+      <Button description="Go for it !" @click="fetch"/>
     </div>
 
   </div>

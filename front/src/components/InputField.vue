@@ -1,9 +1,17 @@
 <script setup lang="ts">
 
+let value;
+const emit = defineEmits(['update:value']);
+
+// Method to handle the update
+const updateValue = (event : any) => {
+  emit('update:value', event.target.value);
+};
+
 </script>
 
 <template>
-    <input class="input-field" />
+    <input class="input-field" :value="value" @input="updateValue" />
 </template>
 
 <style scoped>

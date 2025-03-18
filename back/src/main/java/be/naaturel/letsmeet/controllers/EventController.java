@@ -18,7 +18,7 @@ public class EventController {
     }
 
 
-    @GetMapping({"/event", "/event/{token}"})
+    @GetMapping({"/event/{token}/", "/event/{token}"})
     public ResponseEntity<?> get(@PathVariable String token){
 
         try{
