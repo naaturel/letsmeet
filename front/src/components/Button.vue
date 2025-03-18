@@ -13,6 +13,8 @@
 <style scoped>
 
 .button {
+  height: 100%;
+  width: 100%;
   color: var(--primary-color);
   text-align: center;
   align-content: center;
@@ -20,7 +22,6 @@
   border-radius: var(--radius);
   background-color: var(--secondary-color);
   word-break: break-word;
-  min-height: 7vh;
 }
 
 .button:hover

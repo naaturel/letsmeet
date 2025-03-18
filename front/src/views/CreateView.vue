@@ -34,6 +34,13 @@ import NavLink from "@/components/NavLink.vue";
   gap: 20px;
 }
 
+.nav-link
+{
+  width: 50%;
+  height: 70px;
+  min-height: 70px;
+}
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 1001px) {
 

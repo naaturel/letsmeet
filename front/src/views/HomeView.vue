@@ -7,7 +7,7 @@ import TextBlock from "@/components/TextBlock.vue";
 <template>
 
   <div class="container">
-    <TextBlock class="introduction">
+    <TextBlock class="text-block">
       <h1>Welcome !</h1>
       <p>
         This website is currently under <span class="colored-text">development</span> and might look ugly as fuck
@@ -21,45 +21,39 @@ import TextBlock from "@/components/TextBlock.vue";
 
       <div class="actions-group">
         <h1>Meet up <span class="colored-text">now</span> !</h1>
-        <NavLink path="/create" description="Create" class="button"></NavLink>
-        <NavLink path="/join" description="Join" class="button"></NavLink>
+        <NavLink path="/create" description="Create"></NavLink>
+        <NavLink path="/join" description="Join"></NavLink>
     </div>
   </div>
 
 </template>
 
-
 <style scoped>
 
-.actions-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.text-block, .actions-group {
+  min-width: 300px;
+  min-height: 250px;
 }
 
-.introduction p
+.text-block p
 {
   text-align: justify;
-}
-
-.actions-group {
-  flex-direction: column;
-  min-width: 250px;
-}
-
-.actions-group {
-  justify-content: center;
-  gap: 4vh;
-  height: fit-content;
-  border-radius: var(--radius);
-  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.0));
-  margin-bottom: 5vh;
 }
 
 .actions-group h1
 {
   margin-top: 0;
+}
+
+.actions-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4vh;
+  height: fit-content;
+  border-radius: var(--radius);
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.0));
 }
 
 .actions-group::before,
@@ -87,9 +81,9 @@ import TextBlock from "@/components/TextBlock.vue";
   border-top: none;
 }
 
-.button {
-  width: 50%;
-  min-width: 50%;
+.nav-link {
+  height: 70px;
+  min-height: 70px;
 }
 
 /* MEDIA QUERIES */
@@ -99,22 +93,28 @@ import TextBlock from "@/components/TextBlock.vue";
     width: 35%;
   }
 
-  .introduction p
+  .text-block p
   {
     width: 90%;
     margin-bottom: 0;
   }
 
-  .introduction h1
+  .text-block h1
   {
     font-size: 4rem;
     margin: 0 5px 5px 5px;
   }
+
+  .nav-link
+  {
+    width: 50%;
+  }
+
 }
 
 @media screen and (max-width: 1000px) {
 
-  .introduction, .actions-group {
+  .text-block, .actions-group {
     width: 100%;
   }
 
@@ -122,16 +122,21 @@ import TextBlock from "@/components/TextBlock.vue";
     height: 40%;
   }
 
-  .introduction p
+  .text-block p
   {
     width: 95%;
     margin-bottom: 0;
   }
 
-  .introduction h1
+  .text-block h1
   {
     font-size: 2.5rem;
     margin: 0 5px 5px 5px;
+  }
+
+  .nav-link
+  {
+    width: 70%;
   }
 }
 

@@ -10,9 +10,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <router-link :to=path>
-    <Button :description="description"/>
-  </router-link>
+  <div class="nav-link">
+    <router-link :to=path >
+      <Button :description="description"/>
+    </router-link>
+  </div>
 </template>
 
 <style scoped>

@@ -37,7 +37,7 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 10vh;
+  min-height: 50px;
   border-bottom: 1px solid;
   border-radius: var(--radius);
   background-color: var(--header-color);
