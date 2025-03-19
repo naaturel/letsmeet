@@ -4,7 +4,6 @@
   import {ref, onMounted, watch} from "vue";
   import { datePickerStore } from "@/stores/CalendarStore.ts";
   import { Calendar } from "@/models/Calendar.ts";
-  import router from "@/router";
 
   const calendar = new Calendar();
   const datePicker = datePickerStore();

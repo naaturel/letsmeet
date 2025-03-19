@@ -10,16 +10,16 @@ export class Attendee {
     this.dates = dates;
   }
 
-  public getName(){
+  public getName() : string {
     return this.name;
   }
 
-  public getDate() : TimeStamp[]{
+  public getDates() : TimeStamp[] {
     return this.dates;
   }
 }
 
 export interface AttendeeState {
-  name : String
+  name : string
   dates : TimeStampState[]
 }
