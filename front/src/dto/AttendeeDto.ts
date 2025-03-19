@@ -1,6 +1,6 @@
 import type {TimeStampDto} from "@/dto/TimeStampDto.ts";
 
-export class ParticipantDto {
+export class AttendeeDto {
 
   public name: string;
   public dates: TimeStampDto[];

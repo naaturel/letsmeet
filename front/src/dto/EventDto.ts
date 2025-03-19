@@ -1,17 +1,17 @@
-import type {Participant} from "@/models/Participant.ts";
+import type {Attendee} from "@/models/Attendee.ts";
 import type {TimeStamp} from "@/models/TimeStamp.ts";
-import type {ParticipantDto} from "@/dto/ParticipantDto.ts";
+import type {AttendeeDto} from "@/dto/AttendeeDto.ts";
 
 export class EventDto {
 
   public name: string;
   public token: string;
-  public participants: ParticipantDto[];
+  public attendees: AttendeeDto[];
 
-  public constructor(name: string, token: string, participants: ParticipantDto[]) {
+  public constructor(name: string, token: string, attendees: AttendeeDto[]) {
     this.name = name;
     this.token = token;
-    this.participants = participants;
+    this.attendees = attendees;
   }
 
 }

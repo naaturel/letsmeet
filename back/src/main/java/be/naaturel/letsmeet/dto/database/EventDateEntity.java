@@ -23,7 +23,7 @@ public class EventDateEntity {
     public EventEntity event;
 
     @ManyToMany(mappedBy = "dates")
-    public Set<ParticipantEntity> participants;
+    public Set<AttendeeEntity> attendees;
 
     @Override
     public boolean equals(Object obj) {

@@ -24,7 +24,7 @@ export class EventRequests {
     let url = this.formatUrl([this.baseUrl, this.endpoints.EVENTS, token]);
     return fetch(url)
       .then(response => response.json())
-      .then(data => new EventDto(data.name, data.token, data.participants))
+      .then(data => new EventDto(data.name, data.token, data.attendees))
       .catch(error => console.error(error));
   }
 }

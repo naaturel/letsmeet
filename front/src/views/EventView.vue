@@ -16,16 +16,25 @@ function extractToken() : string {
   return Array.isArray(route.params.token) ? route.params.token[0] : route.params.token;
 }
 
+function attendeesByDates(){
+
+}
+
+function formatDate(timestamp : number) : String{
+  let date = DateHelper.toDate(timestamp)
+  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+}
+
 </script>
 
 <template>
 
-  Name : {{ store.event.name }}
-  Participants :
-  <div v-for="(p) in store.event.participants" >
+  Name : {{ store.event.name }} <br>
+  attendees :
+  <div v-for="(p) in store.event.attendees" >
     {{ p.name  }}
     <div v-for="(d) in p.dates">
-      {{ DateHelper.toDate(d.value) }}
+      {{ formatDate(d.value) }}
     </div>
   </div>
 </template>

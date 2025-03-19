@@ -22,8 +22,8 @@ public class EventEntity {
     public Set<EventDateEntity> dates;
 
     @Column
-    @OneToMany(targetEntity=ParticipantEntity.class, cascade=CascadeType.ALL, mappedBy="event")
-    public Set<ParticipantEntity> participants;
+    @OneToMany(targetEntity=AttendeeEntity.class, cascade=CascadeType.ALL, mappedBy="event")
+    public Set<AttendeeEntity> attendees;
 
     public void linkDates(){
         for (EventDateEntity date : this.dates) {
@@ -31,16 +31,16 @@ public class EventEntity {
         }
     }
 
-    public void linkParticipants(){
-        for (ParticipantEntity participant : this.participants) {
-            participant.event = this;
+    public void linkAttendees(){
+        for (AttendeeEntity attendee : this.attendees) {
+            attendee.event = this;
         }
     }
 
     public void removeDuplicatedDates(){
 
         for (EventDateEntity ede: dates) {
-            for (ParticipantEntity pe : participants) {
+            for (AttendeeEntity pe : attendees) {
                 if(pe.dates.contains(ede)){
                     pe.dates.remove(ede);
                     pe.dates.add(ede);

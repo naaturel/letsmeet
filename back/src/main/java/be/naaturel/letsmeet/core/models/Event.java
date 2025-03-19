@@ -5,24 +5,24 @@ import java.util.*;
 public class Event {
 
     private String name;
-    private Set<Participant> participants;
+    private Set<Attendee> attendees;
 
-    public Event(String name, Set<Participant> participants){
+    public Event(String name, Set<Attendee> attendees){
         this.name = name;
-        this.participants = participants;
+        this.attendees = attendees;
     }
 
     public String getName() {
         return name;
     }
 
-    public Set<Participant> getParticipants(){
-        return new HashSet<>(this.participants);
+    public Set<Attendee> getAttendees(){
+        return new HashSet<>(this.attendees);
     }
 
     public Set<EventDate> getDates() {
         Set<EventDate> dates = new HashSet<>();
-        for (Participant p : this.participants) {
+        for (Attendee p : this.attendees) {
             dates.addAll(p.getDates());
         }
         return dates;

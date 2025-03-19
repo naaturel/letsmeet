@@ -5,6 +5,6 @@ import java.util.Set;
 public class EventDTO {
 
     public String name;
-    public Set<ParticipantDTO> participants;
+    public Set<AttendeeDTO> attendees;
 
 }

@@ -2,8 +2,8 @@ import {defineStore} from 'pinia'
 import {EventRequests} from "@/requests/EventRequests.ts";
 import type {EventDto} from "@/dto/EventDto.ts";
 import type {EventState} from "@/models/Event.ts";
-import type {ParticipantDto} from "@/dto/ParticipantDto.ts";
-import type {ParticipantState} from "@/models/Participant.ts";
+import type {AttendeeDto} from "@/dto/AttendeeDto.ts";
+import type {AttendeeState} from "@/models/Attendee.ts";
 import type {TimeStamp, TimeStampState} from "@/models/TimeStamp.ts";
 import type {TimeStampDto} from "@/dto/TimeStampDto.ts";
 
@@ -15,7 +15,7 @@ export const eventStore = defineStore('eventStore', {
       event : {
         name: "",
         token: "",
-        participants: [] as ParticipantState[]
+        attendees: [] as AttendeeState[]
       }};
   },
   getters : {
@@ -30,7 +30,7 @@ export const eventStore = defineStore('eventStore', {
           this.event.name = data.name;
           this.event.token = data.token;
 
-          this.event.participants = data.participants.map((p: ParticipantDto) => ({
+          this.event.attendees = data.attendees.map((p: AttendeeDto) => ({
             name: p.name,
             dates: p.dates.map((date: TimeStampDto) => ({
               value: date.timestamp

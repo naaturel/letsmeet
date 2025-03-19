@@ -1,31 +1,31 @@
 package be.naaturel.letsmeet.mappers.database;
 
 import be.naaturel.letsmeet.dto.database.EventEntity;
-import be.naaturel.letsmeet.dto.database.ParticipantEntity;
+import be.naaturel.letsmeet.dto.database.AttendeeEntity;
 import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
 import be.naaturel.letsmeet.mappers.Mapper;
 import be.naaturel.letsmeet.core.models.Event;
-import be.naaturel.letsmeet.core.models.Participant;
+import be.naaturel.letsmeet.core.models.Attendee;
 
 import java.util.*;
 import java.util.function.Supplier;
 
 public class EventMapper implements Mapper<Event, EventEntity> {
 
-    private final Mapper<Participant, ParticipantEntity> participantMapper;
+    private final Mapper<Attendee, AttendeeEntity> attendeeMapper;
 
     public EventMapper(){
-        this.participantMapper = new ParticipantMapper();
+        this.attendeeMapper = new AttendeeMapper();
     }
 
     @Override
     public EventEntity toEntity(Event event) {
-        return DatabasePropsFactory.createEvent(event.getName(), participantMapper.toEntities(event.getParticipants(), HashSet::new));
+        return DatabasePropsFactory.createEvent(event.getName(), attendeeMapper.toEntities(event.getAttendees(), HashSet::new));
     }
 
     @Override
     public Event toModel(EventEntity eventEntity) {
-        return new Event(eventEntity.name, participantMapper.toModels(eventEntity.participants, HashSet::new));
+        return new Event(eventEntity.name, attendeeMapper.toModels(eventEntity.attendees, HashSet::new));
     }
 
     @Override

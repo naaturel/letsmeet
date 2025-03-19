@@ -4,17 +4,17 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Participant {
+public class Attendee {
 
     private String name;
 
     private Set<EventDate> dates;
 
-    public Participant(String name){
+    public Attendee(String name){
         this(name, new HashSet<>());
     }
 
-    public Participant(String name, Set<EventDate> dates){
+    public Attendee(String name, Set<EventDate> dates){
         this.name = name;
         this.dates = dates;
     }
@@ -37,7 +37,7 @@ public class Participant {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Participant date = (Participant) obj;
+        Attendee date = (Attendee) obj;
         return Objects.equals(name, date.name);
     }
 

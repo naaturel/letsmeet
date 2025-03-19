@@ -3,31 +3,31 @@ package be.naaturel.letsmeet.dto.database.factories;
 import be.naaturel.letsmeet.core.helpers.TokenGenerator;
 import be.naaturel.letsmeet.dto.database.EventDateEntity;
 import be.naaturel.letsmeet.dto.database.EventEntity;
-import be.naaturel.letsmeet.dto.database.ParticipantEntity;
+import be.naaturel.letsmeet.dto.database.AttendeeEntity;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class DatabasePropsFactory {
 
-    public static EventEntity createEvent(String name, Set<ParticipantEntity> participants){
+    public static EventEntity createEvent(String name, Set<AttendeeEntity> attendees){
 
         EventEntity entity = new EventEntity();
         entity.name = name;
         entity.token = TokenGenerator.generate();
-        entity.participants = participants;
+        entity.attendees = attendees;
         entity.dates = new HashSet<>();
-        for (ParticipantEntity pe : entity.participants) {
+        for (AttendeeEntity pe : entity.attendees) {
             entity.dates.addAll(pe.dates);
         }
         entity.linkDates();
-        entity.linkParticipants();
+        entity.linkAttendees();
         entity.removeDuplicatedDates();
         return entity;
     }
 
-    public static ParticipantEntity createParticipant(String name, Set<EventDateEntity> dates){
-        ParticipantEntity entity = new ParticipantEntity();
+    public static AttendeeEntity createAttendee(String name, Set<EventDateEntity> dates){
+        AttendeeEntity entity = new AttendeeEntity();
         entity.name = name;
         entity.dates = dates;
         return entity;

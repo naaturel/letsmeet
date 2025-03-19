@@ -1,16 +1,15 @@
-import type {Participant, ParticipantState} from "@/models/Participant.ts";
-import type {TimeStampState} from "@/models/TimeStamp.ts";
+import type {Attendee, AttendeeState} from "@/models/Attendee.ts";
 
 export class Event {
 
   private name: string;
   private token: string;
-  private participants: Participant[];
+  private attendees: Attendee[];
 
-  public constructor(name: string, token: string, participants: Participant[]) {
+  public constructor(name: string, token: string, attendees: Attendee[]) {
     this.name = name;
     this.token = token;
-    this.participants = participants;
+    this.attendees = attendees;
   }
 
   public getName() : string {
@@ -21,8 +20,8 @@ export class Event {
     return this.token;
   }
 
-  public getParticipants() : Participant[] {
-    return this.participants;
+  public getAttendees() : Attendee[] {
+    return this.attendees;
   }
 
 }
@@ -30,6 +29,6 @@ export class Event {
 export interface EventState {
   name : String
   token : String
-  participants: ParticipantState[];
+  attendees: AttendeeState[];
 }
 

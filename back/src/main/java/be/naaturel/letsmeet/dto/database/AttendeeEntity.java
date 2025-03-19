@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
-@Entity
-public class ParticipantEntity {
+@Entity(name = "Attendees")
+public class AttendeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

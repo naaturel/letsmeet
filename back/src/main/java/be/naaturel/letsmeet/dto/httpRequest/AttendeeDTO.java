@@ -2,7 +2,7 @@ package be.naaturel.letsmeet.dto.httpRequest;
 
 import java.util.Set;
 
-public class ParticipantDTO {
+public class AttendeeDTO {
 
     public String name;
 

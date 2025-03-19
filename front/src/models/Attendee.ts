@@ -1,6 +1,6 @@
 import type {TimeStamp, TimeStampState} from "@/models/TimeStamp.ts";
 
-export class Participant {
+export class Attendee {
 
   private name: string;
   private dates: TimeStamp[];
@@ -19,7 +19,7 @@ export class Participant {
   }
 }
 
-export interface ParticipantState {
+export interface AttendeeState {
   name : String
   dates : TimeStampState[]
 }
