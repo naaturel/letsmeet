@@ -10,3 +10,7 @@ export class TimeStamp {
     return this.value;
   }
 }
+
+export interface TimeStampState {
+  value : number;
+}

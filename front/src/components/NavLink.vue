@@ -1,19 +1,34 @@
 <script setup lang="ts">
 
 import Button from "@/components/Button.vue";
+import {useRouter} from "vue-router";
 
-const props = defineProps<{
-  path: string;
-  description: string;
-}>();
+const router = useRouter();
+
+const props = defineProps({
+  description: {
+    type: [String],
+    required: true
+  },
+  name: {
+    type: [String],
+    required: true
+  },
+  params: {
+    type: [Object],
+    required: false
+  }});
+
+function browse() : void {
+  console.log({ name: props.name, params: props.params});
+  router.push({ name: props.name, params: props.params});
+}
 
 </script>
 
 <template>
-  <div class="nav-link">
-    <router-link :to=path >
+  <div class="nav-link" @click="browse">
       <Button :description="description"/>
-    </router-link>
   </div>
 </template>
 

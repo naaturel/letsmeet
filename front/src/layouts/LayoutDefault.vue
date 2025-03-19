@@ -9,9 +9,9 @@ import NavLink from "@/components/NavLink.vue";
     <nav class="nav">
       <p>Let's<br>Meet</p>
       <div class="nav-actions-group">
-        <NavLink path="/" description="Home"></NavLink>
-        <NavLink path="/login" description="Log in"></NavLink>
-        <NavLink path="/about" description="About"></NavLink>
+        <NavLink name="home" description="Home"></NavLink>
+        <NavLink name="login" description="Log in"></NavLink>
+        <NavLink name="about" description="About"></NavLink>
       </div>
     </nav>
 

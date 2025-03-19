@@ -1,4 +1,4 @@
-import type {TimeStamp} from "@/models/TimeStamp.ts";
+import type {TimeStamp, TimeStampState} from "@/models/TimeStamp.ts";
 
 export class Participant {
 
@@ -10,4 +10,16 @@ export class Participant {
     this.dates = dates;
   }
 
+  public getName(){
+    return this.name;
+  }
+
+  public getDate() : TimeStamp[]{
+    return this.dates;
+  }
+}
+
+export interface ParticipantState {
+  name : String
+  dates : TimeStampState[]
 }

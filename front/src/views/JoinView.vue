@@ -1,16 +1,11 @@
 <script setup lang="ts">
 
 import TextBlock from "@/components/TextBlock.vue";
-import Button from "@/components/Button.vue";
 import InputField from "@/components/InputField.vue";
-import { eventStore } from "@/stores/EventStore.ts";
+import NavLink from "@/components/NavLink.vue";
+import {ref} from "vue";
 
-let token : string = '';
-const event = eventStore();
-
-function fetch(){
-  event.fetch(token);
-}
+const token = ref("");
 
 </script>
 
@@ -22,9 +17,9 @@ function fetch(){
     </TextBlock>
 
     <div class="actions-group">
-      <h1>Event <span class="colored-text">code</span></h1>
+      <h1>EventDto <span class="colored-text">code</span></h1>
       <InputField @update:value="(newValue) => {token = newValue}" />
-      <Button description="Go for it !" @click="fetch"/>
+      <NavLink description="Go for it !" name="event" :params="{ token: token }" />
     </div>
 
   </div>
@@ -88,7 +83,7 @@ function fetch(){
   font-size: calc(0.4 * 75px);
 }
 
-.input-field, .button {
+.input-field, .nav-link {
   height: 75px;
   min-height: 75px;
 }
@@ -112,7 +107,7 @@ function fetch(){
     margin: 0 5px 5px 5px;
   }
 
-  .button, .input-field
+  .nav-link, .input-field
   {
     width: 50%;
   }
@@ -140,7 +135,7 @@ function fetch(){
     margin: 0 5px 5px 5px;
   }
 
-  .button, .input-field
+  .nav-link, .input-field
   {
     width: 70%;
   }

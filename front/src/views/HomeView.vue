@@ -21,8 +21,8 @@ import TextBlock from "@/components/TextBlock.vue";
 
       <div class="actions-group">
         <h1>Meet up <span class="colored-text">now</span> !</h1>
-        <NavLink path="/create" description="Create"></NavLink>
-        <NavLink path="/join" description="Join"></NavLink>
+        <NavLink name="create" description="Create"></NavLink>
+        <NavLink name="join" description="Join"></NavLink>
     </div>
   </div>
 

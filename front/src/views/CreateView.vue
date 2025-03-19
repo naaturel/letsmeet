@@ -13,7 +13,7 @@ import NavLink from "@/components/NavLink.vue";
     </TextBlock>
     <div class="event-form">
       <Calendar class="calendar"/>
-      <NavLink path="/create" description="Create" class="create-button"></NavLink>
+      <NavLink name="Create" description="Create" class="create-button"></NavLink>
     </div>
   </div>
 

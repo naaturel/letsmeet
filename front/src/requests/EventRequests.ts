@@ -1,4 +1,5 @@
-import { API_PATHS } from "@/config/ApiConfig.ts";
+import {API_PATHS} from "@/config/ApiConfig.ts";
+import {EventDto} from "@/dto/EventDto.ts";
 
 export class EventRequests {
 
@@ -12,22 +13,18 @@ export class EventRequests {
 
   private formatUrl(parts:string[]) : string {
     let res = "";
-    console.log(parts)
     parts.forEach((value) => {
-      console.log(value)
       res += value.trim();
     })
-    return res.replace(/(http|https?:\/\/[^\/]+)\/\//, '$1/');
+    return res.replace(/([^:]\/)\/+/g, "$1");
   }
 
-  public queryEvent(token : string) {
+  public async queryEvent(token : string): Promise<void | EventDto>  {
 
     let url = this.formatUrl([this.baseUrl, this.endpoints.EVENTS, token]);
-    console.log(url);
-    fetch(url)
+    return fetch(url)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => new EventDto(data.name, data.token, data.participants))
       .catch(error => console.error(error));
-
   }
 }
