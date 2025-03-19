@@ -17,7 +17,7 @@ const token = ref("");
     </TextBlock>
 
     <div class="actions-group">
-      <h1>EventDto <span class="colored-text">code</span></h1>
+      <h1>Event <span class="colored-text">code</span></h1>
       <InputField @update:value="(newValue) => {token = newValue}" />
       <NavLink description="Go for it !" name="event" :params="{ token: token }" />
     </div>
