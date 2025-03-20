@@ -37,22 +37,22 @@ function updateDates(value: number) {
   store.toggleDate(value)
 }
 
-function displayError(message: string, target : Element) {
+function displayError(message: string, target : HTMLElement) {
   target.style.border = "2px solid red";
   errorMessage.value = message;
 }
 
-function resetError(target : Element){
+function resetError(target : HTMLElement){
   target.style.border = "2px solid black";
   errorMessage.value = "";
 }
 
-function getNameField() : Element {
-  return document.getElementsByClassName("input-field")[0];
+function getNameField() : HTMLElement {
+  return document.getElementsByClassName("input-field")[0] as HTMLElement;
 }
 
-function getCalendar() : Element {
-  return document.getElementsByClassName("calendar-container")[0];
+function getCalendar() : HTMLElement {
+  return document.getElementsByClassName("calendar-container")[0] as HTMLElement;
 }
 
 </script>
