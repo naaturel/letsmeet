@@ -3,6 +3,7 @@
 import Calendar from "@/components/Calendar.vue";
 import TextBlock from "@/components/TextBlock.vue";
 import NavLink from "@/components/NavLink.vue";
+import InputField from "@/components/InputField.vue";
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import NavLink from "@/components/NavLink.vue";
       <h1>Create an <span class="colored-text">event</span></h1>
     </TextBlock>
     <div class="event-form">
+      <InputField placeholder="Event name"/>
       <Calendar class="calendar"/>
       <NavLink name="Create" description="Create" class="create-button"></NavLink>
     </div>
@@ -34,11 +36,17 @@ import NavLink from "@/components/NavLink.vue";
   gap: 20px;
 }
 
+.input-field{
+  height: 50px;
+  font-size: calc(0.4 * 50px);
+  min-height: 50px;
+}
+
 .nav-link
 {
   width: 50%;
-  height: 70px;
-  min-height: 70px;
+  height: 50px;
+  min-height: 50px;
 }
 
 /* MEDIA QUERIES */
@@ -57,11 +65,17 @@ import NavLink from "@/components/NavLink.vue";
     width: 100%;
     min-width: 100%;
   }
+
+  .input-field
+  {
+    width: 50%;
+  }
+
 }
 
 @media screen and (max-width: 1000px) {
 
-  .title, .event-form {
+  .title, .event-form, .input-field, .nav-link {
     width: 100%;
   }
 

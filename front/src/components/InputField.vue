@@ -3,6 +3,13 @@
 let value;
 const emit = defineEmits(['update:value']);
 
+const props = defineProps({
+  placeholder: {
+    type: [String],
+    required: false
+  }
+});
+
 // Method to handle the update
 const updateValue = (event : any) => {
   emit('update:value', event.target.value);
@@ -11,7 +18,7 @@ const updateValue = (event : any) => {
 </script>
 
 <template>
-    <input class="input-field" :value="value" @input="updateValue" />
+    <input :placeholder="placeholder" class="input-field" :value="value" @input="updateValue" />
 </template>
 
 <style scoped>

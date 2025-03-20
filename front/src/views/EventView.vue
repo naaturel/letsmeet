@@ -26,7 +26,7 @@ function extractToken() : string {
 }
 
 function formatDate(timestamp : number) : String{
-  let date = DateHelper.toDate(timestamp)
+  let date = DateHelper.toDate(timestamp);
   return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 }
 
