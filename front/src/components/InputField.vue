@@ -26,6 +26,7 @@ input
 {
   line-height: 100%;
   text-align: center;
+  border: solid 2px black;
   border-radius: var(--radius);
 }
 

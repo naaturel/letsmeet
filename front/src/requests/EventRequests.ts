@@ -30,14 +30,15 @@ export class EventRequests {
       .catch(error => console.error(error));
   }
 
-  public async createEvent(event : EventDto){
+  public async createEvent(event : EventDto) : Promise<void | string> {
     let url = this.formatUrl([this.baseUrl, this.endpoints.CREATE]);
     return fetch(url, {
       method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body : JSON.stringify(event)
     })
       .then(response => response.json())
-      .then(data => new EventDto(data.name, data.token, data.attendees))
+      .then(data => data.value)
       .catch(error => console.error(error));
   }
 

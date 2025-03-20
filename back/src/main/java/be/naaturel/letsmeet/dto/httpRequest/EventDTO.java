@@ -6,6 +6,7 @@ import java.util.Set;
 public class EventDTO {
 
     public String name;
+    public String token;
     public Map<String, Set<AttendeeDTO>> dates;
 
 }

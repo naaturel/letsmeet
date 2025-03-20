@@ -5,25 +5,25 @@
   import { datePickerStore } from "@/stores/CalendarStore.ts";
   import { Calendar } from "@/models/Calendar.ts";
 
-  const calendar = new Calendar();
-  const datePicker = datePickerStore();
-  const monthYear = ref("");
-  const dates = ref([] as (number | null)[]);
-  const selectedDays = ref(new Map<string, Date>());
-
   onMounted(() => {
     setupCalendar();
   })
 
-  watch(selectedDays, (newValue) => {
-    let dates = Array.from(newValue.values())
-    datePicker.update(dates);
-  }, { deep: true });
+  const calendar = new Calendar();
+  const monthYear = ref("");
+  const dates = ref([] as (number | null)[]);
+  const selectedDays = ref(new Map<string, Date>());
+
+  const emit = defineEmits(['update:value']);
+  const emitNewDay = (timestamp : number) => {
+    emit('update:value', timestamp);
+  };
 
   function selectDay(event : Event, day : number | null){
     if(!(event.target instanceof HTMLElement) || day == null) return;
     calendar.setDay(day);
     toggleSelectedDay(event.target.id,  calendar.getDate());
+    emitNewDay(calendar.getDate().getTime());
     highlightSelectedDay(event.target);
   }
 
@@ -80,8 +80,6 @@
       <div>S</div>
     </div>
 
-    <!--Elements are not recreated ? Does only the id change ? -->
-    <!--Keep track of all selected ids and update view when month is update ? -->
     <div class="day-picker">
       <div v-on:click="selectDay($event, day)"
            v-for  ="(day) in dates"

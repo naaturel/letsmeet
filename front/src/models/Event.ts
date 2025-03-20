@@ -29,6 +29,6 @@ export class Event {
 export interface EventState {
   name : string
   token : string
-  dates: Map<EventDateState, AttendeeState[]>;
+  dates: Map<number, AttendeeState[]>;
 }
 

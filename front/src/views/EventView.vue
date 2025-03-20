@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {eventStore} from "@/stores/EventStore.ts";
+import {eventCreationStore} from "@/stores/EventCreationStore.ts";
 import {onBeforeMount, ref} from "vue";
 import {useRoute} from "vue-router";
 import {DateHelper} from "@/helpers/DateHelper.ts";
@@ -7,7 +7,7 @@ import {Event} from "@/models/Event.ts";
 import ErrorBlock from "@/components/ErrorBlock.vue";
 
 const route = useRoute();
-const store = eventStore();
+const store = eventCreationStore();
 const token = extractToken();
 let event = ref<Event | undefined>();
 

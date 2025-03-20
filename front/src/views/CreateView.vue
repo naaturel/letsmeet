@@ -2,11 +2,58 @@
 
 import Calendar from "@/components/Calendar.vue";
 import TextBlock from "@/components/TextBlock.vue";
-import NavLink from "@/components/NavLink.vue";
 import InputField from "@/components/InputField.vue";
-import {eventStore} from "@/stores/EventStore.ts";
+import {eventCreationStore} from "@/stores/EventCreationStore.ts";
+import Button from "@/components/Button.vue";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+import {API_PATHS} from "@/config/ApiConfig.ts";
 
-const store = eventStore();
+const router = useRouter();
+const store = eventCreationStore();
+const errorMessage = ref("");
+
+async function createEvent() {
+  if(!store.event.name){
+    displayError("Please enter a valid name.", getNameField());
+    return;
+  }
+  if(store.event.dates.size == 0){
+    displayError("Please select at least one date", getCalendar());
+    return;
+  }
+
+  let createdToken = await store.createEvent();
+  await router.push({name: API_PATHS.NAMES.EVENTS, params: {token: createdToken}});
+}
+
+function updateName(value: string) {
+  resetError(getNameField());
+  store.setName(value);
+}
+
+function updateDates(value: number) {
+  resetError(getCalendar());
+  store.toggleDate(value)
+}
+
+function displayError(message: string, target : Element) {
+  target.style.border = "2px solid red";
+  errorMessage.value = message;
+}
+
+function resetError(target : Element){
+  target.style.border = "2px solid black";
+  errorMessage.value = "";
+}
+
+function getNameField() : Element {
+  return document.getElementsByClassName("input-field")[0];
+}
+
+function getCalendar() : Element {
+  return document.getElementsByClassName("calendar-container")[0];
+}
 
 </script>
 
@@ -17,9 +64,12 @@ const store = eventStore();
       <h1>Create an <span class="colored-text">event</span></h1>
     </TextBlock>
     <div class="event-form">
-      <InputField placeholder="Event name" @update:value="(newValue) => { store.setName(newValue) }"/>
-      <Calendar class="calendar"/>
-      <NavLink name="Create" description="Create" class="create-button"></NavLink>
+      <div class="whatever-the-fuck-this-is">
+        <InputField placeholder="Event name" @update:value="(newValue) => { updateName(newValue) }"/>
+        <div>{{ errorMessage }}</div>
+      </div>
+      <Calendar class="calendar" @update:value="(newValue) => { updateDates(newValue) }"/>
+      <Button @click="createEvent" description="Create" class="create-button" ></Button>
     </div>
   </div>
 
@@ -46,11 +96,19 @@ const store = eventStore();
   min-height: 50px;
 }
 
-.nav-link
+.button
 {
   width: 50%;
   height: 50px;
   min-height: 50px;
+}
+
+.whatever-the-fuck-this-is
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* MEDIA QUERIES */
@@ -79,7 +137,7 @@ const store = eventStore();
 
 @media screen and (max-width: 1000px) {
 
-  .title, .event-form, .input-field, .nav-link {
+  .title, .event-form, .input-field, .button {
     width: 100%;
   }
 

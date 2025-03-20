@@ -4,5 +4,10 @@ export const API_PATHS = {
     EVENTS: '/event/',
     CREATE: '/create/',
     JOIN: '/join/'
+  },
+  NAMES: {
+    EVENTS: 'event',
+    CREATE: 'create',
+    JOIN: 'join'
   }
 };
