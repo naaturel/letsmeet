@@ -11,7 +11,7 @@ import TextBlock from "@/components/TextBlock.vue";
       <h1>Welcome !</h1>
       <p>
         This website is currently under <span class="colored-text">development</span> and might look ugly as fuck
-        bla bla bla I'm just writting things nobody will read to fill the space and see how it looks.
+        bla bla bla I'm just writing things nobody will read to fill the space and see how it looks.
       </p>
       <p>
         Yes I know i could have use

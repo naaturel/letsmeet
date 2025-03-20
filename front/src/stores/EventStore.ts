@@ -1,13 +1,37 @@
 import {defineStore} from 'pinia'
 import {EventRequests} from "@/requests/EventRequests.ts";
-import type {EventDto} from "@/dto/EventDto.ts";
+import {EventDto} from "@/dto/EventDto.ts";
 import {Event, type EventState} from "@/models/Event.ts";
-import type {AttendeeDto} from "@/dto/AttendeeDto.ts";
 import {Attendee, type AttendeeState} from "@/models/Attendee.ts";
-import {TimeStamp, type TimeStampState} from "@/models/TimeStamp.ts";
-import type {TimeStampDto} from "@/dto/TimeStampDto.ts";
+import {EventDate, type EventDateState} from "@/models/EventDate.ts";
 
 const requests = new EventRequests();
+
+function mapToDto() : EventDto{
+  return new EventDto("", "", new Map());
+}
+
+function mapToModel(state : EventState) : Event{
+  let dates: Map<number, Attendee[]> = new Map();
+  for (let [date, attendeesState] of state.dates.entries()) {
+    let attendees : Attendee[] = attendeesState.map(attendee => {
+      return new Attendee(attendee.name);
+    })
+    dates.set(date.value, attendees);
+  }
+  return new Event(state.name, state.token, dates);
+}
+
+function mapToState(dto : EventDto) : EventState {
+  let event : EventState = {name : "", token : "", dates: new Map<EventDateState, AttendeeState[]>()};
+  event.name = dto.name;
+  event.token = dto.token;
+  Object.entries(dto.dates).forEach(([key, attendees]) => {
+    let dateState : EventDateState = { value: Number(key) };
+    event.dates.set(dateState, attendees);
+  });
+  return event;
+}
 
 export const eventStore = defineStore('eventStore', {
   state: (): {event : EventState} => {
@@ -15,36 +39,31 @@ export const eventStore = defineStore('eventStore', {
       event : {
         name: "",
         token: "",
-        attendees: [] as AttendeeState[]
+        dates: new Map<EventDateState, AttendeeState[]>()
       }};
   },
   getters : {
     getEvent(state) : Event  {
-      let attendees : Attendee[] = state.event.attendees.map((a : AttendeeState) => {
-        let dates: TimeStamp[] = a.dates.map(d => new TimeStamp(new Date(d.value)))
-        return new Attendee(a.name, dates);
-      });
-      return new Event(state.event.name.toString(), "", attendees);
+      return mapToModel(state.event);
     }
   },
   actions: {
+    setName(name : string){
+      this.event.name = name;
+    },
     async fetch(token: string): Promise<void> {
         try{
           let data : EventDto | void = await requests.queryEvent(token);
           if(!data) throw new Error("No event found");
-          this.event.name = data.name;
-          this.event.token = data.token;
-
-          this.event.attendees = data.attendees.map((a: AttendeeDto) => ({
-            name: a.name,
-            dates: a.dates.map((date: TimeStampDto) => ({
-              value: date.timestamp
-            })) as TimeStampState[]
-          }));
+          this.event = mapToState(data);
         } catch (error) {
           console.error(error);
-          throw new Error("Unable to fetch.");
+          throw new Error("Unable to fetch. " + error);
         }
     },
+    async create(){
+      let event = mapToDto();
+      await requests.createEvent(event)
+    }
   },
 });

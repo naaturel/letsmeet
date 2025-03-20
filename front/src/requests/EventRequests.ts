@@ -24,7 +24,21 @@ export class EventRequests {
     let url = this.formatUrl([this.baseUrl, this.endpoints.EVENTS, token]);
     return fetch(url)
       .then(response => response.json())
+      .then(data => {
+        return new EventDto(data.name, data.token, data.dates)
+      })
+      .catch(error => console.error(error));
+  }
+
+  public async createEvent(event : EventDto){
+    let url = this.formatUrl([this.baseUrl, this.endpoints.CREATE]);
+    return fetch(url, {
+      method: "POST",
+      body : JSON.stringify(event)
+    })
+      .then(response => response.json())
       .then(data => new EventDto(data.name, data.token, data.attendees))
       .catch(error => console.error(error));
   }
+
 }

@@ -1,18 +1,16 @@
 import type {Attendee, AttendeeState} from "@/models/Attendee.ts";
-import type {TimeStamp} from "@/models/TimeStamp.ts";
+import type {EventDate, EventDateState} from "@/models/EventDate.ts";
 
 export class Event {
 
   private name: string;
   private token: string;
-  private attendees: Attendee[];
-  private groups : Map<number, string[]>;
+  private dates: Map<number, Attendee[]>;
 
-  public constructor(name: string, token: string, attendees: Attendee[]) {
+  public constructor(name: string, token: string, dates : Map<number, Attendee[]>) {
     this.name = name;
     this.token = token;
-    this.attendees = attendees;
-    this.groups = this.byDates();
+    this.dates = dates;
   }
 
   public getName() : string {
@@ -23,34 +21,14 @@ export class Event {
     return this.token;
   }
 
-  public getAttendees() : Attendee[] {
-    return this.attendees;
+  public getDates() : Map<number, Attendee[]> {
+    return this.dates;
   }
-
-  public getGroups() : Map<number, string[]> { return this.groups; }
-
-  private byDates() : Map<number, string[]> {
-    let res : Map<number, string[]> = new Map();
-    this.attendees.forEach((attendee: Attendee) => {
-      attendee.getDates().forEach((timeStamp: TimeStamp) => {
-        let value : number = timeStamp.getValue();
-        if(res.has(value)) {
-          res.get(value)?.push(attendee.getName());
-        } else {
-          res.set(value, []);
-          res.get(value)?.push(attendee.getName());
-        }
-      });
-    });
-
-    return res;
-  }
-
 }
 
 export interface EventState {
-  name : String
-  token : String
-  attendees: AttendeeState[];
+  name : string
+  token : string
+  dates: Map<EventDateState, AttendeeState[]>;
 }
 

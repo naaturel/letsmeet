@@ -10,7 +10,6 @@ const props = defineProps({
   }
 });
 
-// Method to handle the update
 const updateValue = (event : any) => {
   emit('update:value', event.target.value);
 };

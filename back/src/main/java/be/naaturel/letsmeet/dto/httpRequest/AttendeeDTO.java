@@ -5,7 +5,4 @@ import java.util.Set;
 public class AttendeeDTO {
 
     public String name;
-
-    public Set<EventDateDTO> dates;
-
 }

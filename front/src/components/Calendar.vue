@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import ArrowRight from "@/assets/arrow-right.svg"
-  import ArrowLeft from "@/assets/arrow-left.svg";
+  import ArrowRight from "@/assets/svg/arrow-right.svg"
+  import ArrowLeft from "@/assets/svg/arrow-left.svg";
   import {ref, onMounted, watch} from "vue";
   import { datePickerStore } from "@/stores/CalendarStore.ts";
   import { Calendar } from "@/models/Calendar.ts";

@@ -1,25 +1,18 @@
-import type {TimeStamp, TimeStampState} from "@/models/TimeStamp.ts";
+import type {EventDate, EventDateState} from "@/models/EventDate.ts";
 
 export class Attendee {
 
   private name: string;
-  private dates: TimeStamp[];
 
-  public constructor(name: string, dates: TimeStamp[]) {
+  public constructor(name: string) {
     this.name = name;
-    this.dates = dates;
   }
 
   public getName() : string {
     return this.name;
   }
-
-  public getDates() : TimeStamp[] {
-    return this.dates;
-  }
 }
 
 export interface AttendeeState {
   name : string
-  dates : TimeStampState[]
 }

@@ -22,13 +22,12 @@ public class AttendeeDTOMapper implements Mapper<Attendee, AttendeeDTO> {
     public AttendeeDTO toEntity(Attendee d) {
         AttendeeDTO dto = new AttendeeDTO();
         dto.name = d.getName();
-        dto.dates = dateMapper.toEntities(d.getDates(), HashSet::new);
         return dto;
     }
 
     @Override
     public Attendee toModel(AttendeeDTO d) {
-        return new Attendee(d.name, dateMapper.toModels(d.dates, HashSet::new));
+        return null;
     }
 
     @Override

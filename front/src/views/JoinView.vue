@@ -19,7 +19,7 @@ const token = ref("");
     <div class="actions-group">
       <h1>Event <span class="colored-text">code</span></h1>
       <InputField @update:value="(newValue) => {token = newValue}" />
-      <NavLink description="Go for it !" name="event" :params="{ token: token }" />
+      <NavLink description="Go for it !" name="event" :params="{ token: token }"/>
     </div>
 
   </div>

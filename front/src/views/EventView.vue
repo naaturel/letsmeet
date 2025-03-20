@@ -43,12 +43,11 @@ function formatDate(timestamp : number) : String{
 
     <div v-else>
       Name : {{ event.getName() }} <br>
-      <div v-for="(timestamp) in event.getGroups().keys()" >
-        {{ formatDate(timestamp)  }}
-        <div v-for="(attendee) in event.getGroups().get(timestamp)">
-          {{ attendee }}
+      <div v-for="(date) in event.getDates().keys()">
+        {{formatDate(date)}}
+        <div v-for="(attendee) in event.getDates().get(date)">
+          {{attendee.getName()}}
         </div>
-        =================
       </div>
     </div>
 

@@ -1,22 +1,22 @@
 import { defineStore } from 'pinia'
-import {TimeStamp} from "@/models/TimeStamp.ts";
+import {EventDate} from "@/models/EventDate.ts";
 
 export const datePickerStore = defineStore('datePicker', {
   state: () => {
-    return { dates: [] as TimeStamp[] }
+    return { dates: [] as EventDate[] }
   },
   getters: {
-    value: (state) : TimeStamp[] => state.dates as TimeStamp[],
+    value: (state) : EventDate[] => state.dates as EventDate[],
   },
   actions: {
     getValue(){
       return this.dates;
     },
     update(dates : Date[]) : void {
-      this.dates = dates.map(date => new TimeStamp(date));
+      this.dates = dates.map(date => new EventDate(date));
     },
     clear() : void {
-      this.dates = [] as TimeStamp[];
+      this.dates = [] as EventDate[];
     },
   },
 })

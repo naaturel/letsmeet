@@ -1,4 +1,4 @@
-export class TimeStamp {
+export class EventDate {
 
   private readonly value : number;
 
@@ -9,8 +9,13 @@ export class TimeStamp {
   public getValue() : number{
     return this.value;
   }
+
+  public toString() {
+    this.value.toString();
+  }
+
 }
 
-export interface TimeStampState {
+export interface EventDateState {
   value : number;
 }

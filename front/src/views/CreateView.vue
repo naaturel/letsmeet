@@ -4,6 +4,10 @@ import Calendar from "@/components/Calendar.vue";
 import TextBlock from "@/components/TextBlock.vue";
 import NavLink from "@/components/NavLink.vue";
 import InputField from "@/components/InputField.vue";
+import {eventStore} from "@/stores/EventStore.ts";
+
+const store = eventStore();
+
 </script>
 
 <template>
@@ -13,7 +17,7 @@ import InputField from "@/components/InputField.vue";
       <h1>Create an <span class="colored-text">event</span></h1>
     </TextBlock>
     <div class="event-form">
-      <InputField placeholder="Event name"/>
+      <InputField placeholder="Event name" @update:value="(newValue) => { store.setName(newValue) }"/>
       <Calendar class="calendar"/>
       <NavLink name="Create" description="Create" class="create-button"></NavLink>
     </div>
