@@ -131,7 +131,7 @@ const token = ref("");
 
   .text-block h1
   {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 0 5px 5px 5px;
   }
 

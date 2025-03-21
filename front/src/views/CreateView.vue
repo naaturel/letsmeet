@@ -121,6 +121,7 @@ function getCalendar() : HTMLElement {
   .title h1
   {
     font-size: 4rem;
+    margin: 0 5px 5px 5px;
   }
 
   .calendar {
@@ -144,6 +145,13 @@ function getCalendar() : HTMLElement {
   .title {
     height: fit-content;
   }
+
+  .text-block h1
+  {
+    font-size: 2rem;
+    margin: 0 5px 5px 5px;
+  }
+
 }
 
 </style>
