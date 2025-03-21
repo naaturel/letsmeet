@@ -4,8 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import java.io.Console;
-
 public class Interceptor implements HandlerInterceptor {
 
     // Request is intercepted by this method before reaching the Controller

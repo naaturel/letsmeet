@@ -1,36 +1,17 @@
 package be.naaturel.letsmeet.core.models;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 public class Attendee {
 
     private String name;
 
-    private Set<EventDate> dates;
-
-    public Attendee(String name){
-        this(name, new HashSet<>());
-    }
-
-    public Attendee(String name, Set<EventDate> dates){
+    public Attendee(String name) {
         this.name = name;
-        this.dates = dates;
     }
-
 
     public String getName() {
         return name;
-    }
-
-    public Set<EventDate> getDates() {
-        return new HashSet<>(this.dates);
-    }
-
-    public void replaceDate(EventDate oldDate, EventDate newDate){
-        dates.remove(oldDate);
-        dates.add(newDate);
     }
 
     @Override

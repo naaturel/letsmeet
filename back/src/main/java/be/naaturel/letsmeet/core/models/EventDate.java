@@ -1,12 +1,10 @@
 package be.naaturel.letsmeet.core.models;
 
-import java.util.Objects;
-
 public class EventDate {
 
     private long timeStamp;
 
-    public EventDate(long timeStamp){
+    public EventDate(long timeStamp) {
         this.timeStamp = timeStamp;
     }
 

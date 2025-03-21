@@ -1,20 +1,19 @@
 package be.naaturel.letsmeet.mappers.requests;
 
-import be.naaturel.letsmeet.dto.httpRequest.EventDateDTO;
-import be.naaturel.letsmeet.dto.httpRequest.AttendeeDTO;
-import be.naaturel.letsmeet.mappers.Mapper;
-import be.naaturel.letsmeet.core.models.EventDate;
 import be.naaturel.letsmeet.core.models.Attendee;
+import be.naaturel.letsmeet.core.models.EventDate;
+import be.naaturel.letsmeet.dto.httpRequest.AttendeeDTO;
+import be.naaturel.letsmeet.dto.httpRequest.EventDateDTO;
+import be.naaturel.letsmeet.mappers.Mapper;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.function.Supplier;
 
 public class AttendeeDTOMapper implements Mapper<Attendee, AttendeeDTO> {
 
     private final Mapper<EventDate, EventDateDTO> dateMapper;
 
-    public AttendeeDTOMapper(){
+    public AttendeeDTOMapper() {
         this.dateMapper = new EventDateDTOMapper();
     }
 
@@ -27,7 +26,7 @@ public class AttendeeDTOMapper implements Mapper<Attendee, AttendeeDTO> {
 
     @Override
     public Attendee toModel(AttendeeDTO d) {
-        return null;
+        return new Attendee(d.name);
     }
 
     @Override

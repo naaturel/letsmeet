@@ -3,14 +3,17 @@ import {EventRequests} from "@/requests/EventRequests.ts";
 import {EventDto} from "@/dto/EventDto.ts";
 import {Event, type EventState} from "@/models/Event.ts";
 import {Attendee, type AttendeeState} from "@/models/Attendee.ts";
-import type {AttendeeDto} from "@/dto/AttendeeDto.ts";
+import {AttendanceDto} from "@/dto/AttendanceDto.ts";
+import {TimeStampDto} from "@/dto/TimeStampDto.ts";
+import {AttendeeDto} from "@/dto/AttendeeDto.ts";
 
 const requests = new EventRequests();
 
 function mapToDto(state : EventState) : EventDto{
-  let dates : Map<number, AttendeeDto[]> = new Map<number, AttendeeDto[]>();
+  let dates : AttendanceDto[] = [];
   for (let [date, attendeesState] of state.dates.entries()) {
-    dates.set(date, []);
+    let attendance : AttendanceDto = new AttendanceDto(new TimeStampDto(new Date(date)), new AttendeeDto(""));
+    dates.push(attendance);
   }
   return new EventDto(state.name, state.token, dates);
 }
@@ -27,12 +30,15 @@ function mapToModel(state : EventState) : Event{
 }
 
 function mapToState(dto : EventDto) : EventState {
-  let event : EventState = {name : "", token : "", dates: new Map<number, AttendeeState[]>()};
+  let event : EventState = { name : "", token : "", dates: new Map<number, AttendeeState[]>() };
   event.name = dto.name;
   event.token = dto.token;
-  Object.entries(dto.dates).forEach(([key, attendees]) => {
+  dto.attendances.forEach(value => {
+
+  })
+  /*Object.entries(dto.dates).forEach(([key, attendees]) => {
     event.dates.set(Number(key), attendees);
-  });
+  });*/
   return event;
 }
 
@@ -90,14 +96,15 @@ export const eventCreationStore = defineStore('eventStore', {
     async createEvent() : Promise<string> {
       try {
         let event = mapToDto(this.event);
-        let res = await requests.createEvent(event)
+        console.log(JSON.stringify(event));
+        //let res = await requests.createEvent(event)
+        let res = "";
         if(res) return res;
         throw new Error("Unable to create event");
       } catch (error){
         console.error(error);
         throw new Error("Unable to post. " + error);
       }
-
     }
   },
 });

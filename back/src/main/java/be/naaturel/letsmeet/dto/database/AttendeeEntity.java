@@ -2,7 +2,7 @@ package be.naaturel.letsmeet.dto.database;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
+import java.util.Objects;
 
 @Entity(name = "Attendees")
 public class AttendeeEntity {
@@ -14,12 +14,17 @@ public class AttendeeEntity {
     @Column
     public String name;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable
-    public Set<EventDateEntity> dates;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        AttendeeEntity a = (AttendeeEntity) obj;
+        return Objects.equals(name, a.name);
+    }
 
-    @ManyToOne
-    @JoinColumn(nullable=true)
-    public EventEntity event;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
 }

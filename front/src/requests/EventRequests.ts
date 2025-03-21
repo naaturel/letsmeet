@@ -25,7 +25,8 @@ export class EventRequests {
     return fetch(url)
       .then(response => response.json())
       .then(data => {
-        return new EventDto(data.name, data.token, data.dates)
+        console.log(data);
+        return new EventDto(data.name, data.token, data.attendances);
       })
       .catch(error => console.error(error));
   }

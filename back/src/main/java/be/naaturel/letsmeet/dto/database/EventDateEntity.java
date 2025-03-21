@@ -3,7 +3,6 @@ package be.naaturel.letsmeet.dto.database;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-import java.util.Set;
 
 @Entity(name = "Dates")
 @Table(uniqueConstraints = {
@@ -17,13 +16,6 @@ public class EventDateEntity {
 
     @Column
     public long timeStamp;
-
-    @ManyToOne
-    @JoinColumn(nullable=true)
-    public EventEntity event;
-
-    @ManyToMany(mappedBy = "dates")
-    public Set<AttendeeEntity> attendees;
 
     @Override
     public boolean equals(Object obj) {

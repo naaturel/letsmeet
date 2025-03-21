@@ -1,9 +1,8 @@
 package be.naaturel.letsmeet.mappers.database;
 
-import be.naaturel.letsmeet.dto.database.EventDateEntity;
-import be.naaturel.letsmeet.dto.database.factories.DatabasePropsFactory;
-import be.naaturel.letsmeet.mappers.Mapper;
 import be.naaturel.letsmeet.core.models.EventDate;
+import be.naaturel.letsmeet.dto.database.EventDateEntity;
+import be.naaturel.letsmeet.mappers.Mapper;
 
 import java.util.Collection;
 import java.util.function.Supplier;
@@ -13,7 +12,9 @@ public class EventDateMapper implements Mapper<EventDate, EventDateEntity> {
 
     @Override
     public EventDateEntity toEntity(EventDate d) {
-        return DatabasePropsFactory.createDate(d.getTimeStamp());
+        EventDateEntity ede = new EventDateEntity();
+        ede.timeStamp = d.getTimeStamp();
+        return ede;
     }
 
     @Override

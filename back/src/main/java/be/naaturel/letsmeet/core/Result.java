@@ -7,7 +7,7 @@ public class Result<T> {
 
     private T value;
 
-    public Result(T value){
+    public Result(T value) {
         this.value = value;
     }
 

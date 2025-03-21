@@ -3,7 +3,7 @@ package be.naaturel.letsmeet.mappers;
 import java.util.Collection;
 import java.util.function.Supplier;
 
-public interface Mapper<T, T_ENTITY>  {
+public interface Mapper<T, T_ENTITY> {
 
     T_ENTITY toEntity(T d);
 

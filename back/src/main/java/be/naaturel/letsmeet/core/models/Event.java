@@ -1,30 +1,24 @@
 package be.naaturel.letsmeet.core.models;
 
-import java.util.*;
+import java.util.Set;
 
 public class Event {
 
     private String name;
-    private Set<Attendee> attendees;
 
-    public Event(String name, Set<Attendee> attendees){
+    private Set<Attendance> attendances;
+
+    public Event(String name, Set<Attendance> attendances) {
         this.name = name;
-        this.attendees = attendees;
+        this.attendances = attendances;
     }
 
     public String getName() {
         return name;
     }
 
-    public Set<Attendee> getAttendees(){
-        return new HashSet<>(this.attendees);
+    public Set<Attendance> getAttendances() {
+        return this.attendances;
     }
 
-    public Set<EventDate> getDates() {
-        Set<EventDate> dates = new HashSet<>();
-        for (Attendee p : this.attendees) {
-            dates.addAll(p.getDates());
-        }
-        return dates;
-    }
 }

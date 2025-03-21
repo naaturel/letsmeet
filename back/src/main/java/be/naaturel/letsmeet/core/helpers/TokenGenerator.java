@@ -7,7 +7,7 @@ public class TokenGenerator {
 
     private static int length = 6;
 
-    public static String generate(){
+    public static String generate() {
         return UUID.randomUUID().toString().replace("-", "").substring(0, length);
     }
 

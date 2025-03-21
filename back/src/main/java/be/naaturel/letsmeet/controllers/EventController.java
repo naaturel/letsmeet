@@ -13,18 +13,18 @@ public class EventController {
     private final EventService service;
 
     @Autowired
-    public EventController(EventService service){
+    public EventController(EventService service) {
         this.service = service;
     }
 
 
     @GetMapping({"/event/{token}/", "/event/{token}"})
-    public ResponseEntity<?> get(@PathVariable String token){
+    public ResponseEntity<?> get(@PathVariable String token) {
 
-        try{
+        try {
             EventDTO dto = service.getEvent(token);
             return ResponseEntity.ok(dto);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
                     .body("An error has occured : " + e.getMessage());
@@ -32,12 +32,12 @@ public class EventController {
     }
 
     @PostMapping({"/create", "/create/"})
-    public ResponseEntity<?> create(@RequestBody EventDTO dto){
+    public ResponseEntity<?> create(@RequestBody EventDTO dto) {
 
         try {
             Result<String> res = service.save(dto);
             return ResponseEntity.ok(res);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
                     .body("An error has occured : " + e.getMessage());
