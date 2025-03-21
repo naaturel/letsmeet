@@ -96,9 +96,8 @@ export const eventCreationStore = defineStore('eventStore', {
     async createEvent() : Promise<string> {
       try {
         let event = mapToDto(this.event);
-        console.log(JSON.stringify(event));
-        //let res = await requests.createEvent(event)
-        let res = "";
+        console.log(event)
+        let res = await requests.createEvent(event)
         if(res) return res;
         throw new Error("Unable to create event");
       } catch (error){
