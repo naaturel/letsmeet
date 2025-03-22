@@ -5,6 +5,7 @@ import {useRoute} from "vue-router";
 import {DateHelper} from "@/helpers/DateHelper.ts";
 import {Event} from "@/models/Event.ts";
 import ErrorBlock from "@/components/ErrorBlock.vue";
+import AttendanceGraph from "@/components/AttendanceGraph.vue";
 
 const route = useRoute();
 const store = eventCreationStore();
@@ -25,33 +26,27 @@ function extractToken() : string {
   return Array.isArray(route.params.token) ? route.params.token[0] : route.params.token;
 }
 
-function formatDate(timestamp : number) : String{
-  let date = DateHelper.toDate(timestamp);
-  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-}
 
 </script>
 
 <template>
   <div class="container">
 
+
+
     <div v-if="!event" class="error-block">
       <ErrorBlock>
         <h1>This event does not exist</h1>
       </ErrorBlock>
     </div>
-
     <div v-else>
-      Name : {{ event.getName() }} <br>
-      <div v-for="(date) in event.getDates().keys()">
-        {{formatDate(date)}}
-        <div v-for="(attendee) in event.getDates().get(date)">
-          {{attendee.getName()}}
-        </div>
-      </div>
+      <AttendanceGraph :event="event" />
+
     </div>
 
   </div>
+
+
 
 </template>
 
@@ -59,4 +54,9 @@ function formatDate(timestamp : number) : String{
 .error-block{
   width: 100%;
 }
+.attendance-graph
+{
+
+}
+
 </style>

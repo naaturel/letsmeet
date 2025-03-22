@@ -13,6 +13,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "chart.js": "^4.4.8",
     "express-requests-logger": "^4.0.2",
     "pinia": "^3.0.1",
     "vite-plugin-svgr": "^4.3.0",
