@@ -6,6 +6,7 @@ import {DateHelper} from "@/helpers/DateHelper.ts";
 import {Event} from "@/models/Event.ts";
 import ErrorBlock from "@/components/ErrorBlock.vue";
 import AttendanceGraph from "@/components/AttendanceGraph.vue";
+import Calendar from "@/components/Calendar.vue";
 
 const route = useRoute();
 const store = eventCreationStore();
@@ -30,33 +31,39 @@ function extractToken() : string {
 </script>
 
 <template>
-  <div class="container">
-
-
-
-    <div v-if="!event" class="error-block">
+    <div v-if="!event" class="container error-block">
       <ErrorBlock>
         <h1>This event does not exist</h1>
       </ErrorBlock>
     </div>
-    <div v-else>
+    <div v-else class="container">
       <AttendanceGraph :event="event" />
-
+      <Calendar/>
     </div>
-
-  </div>
-
-
-
 </template>
 
 <style scoped>
 .error-block{
   width: 100%;
 }
-.attendance-graph
-{
+
+@media screen and (min-width: 1001px) {
+  .attendance-graph
+  {
+    width: 50%;
+    height: 50%;
+  }
 
 }
+
+@media screen and (max-width: 1000px) {
+  .attendance-graph
+  {
+    width: 500px;
+    height: 500px;
+  }
+
+}
+
 
 </style>

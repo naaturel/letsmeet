@@ -21,19 +21,25 @@ export class Event {
     return this.token;
   }
 
-  public getAttendances() : Map<number, Attendee[]> {
-    return this.attendances;
+  public getDates() : number[] {
+    return Array.from(this.attendances.keys()).sort();
   }
 
-  public getDates() : {dates :  string[], attendances : number[]}{
-    let dates = [];
-    let attendances = [];
-    for (let [date, attendees] of this.attendances.entries()) {
-      dates.push(DateHelper.formatDate(date))
-      attendances.push(attendees.length)
+  public getAttendees(date : number) : Attendee[] {
+    if(this.attendances.has(date)){
+      return this.attendances.get(date)!; //Fuck TS
     }
-    return {dates : dates, attendances : attendances};
+    return [];
   }
+
+  public getMaxAttendees(){
+    let max = 0;
+    this.attendances.forEach(attendee => {
+      if(attendee.length > max) max = attendee.length;
+    })
+    return max;
+  }
+
 }
 
 export interface EventState {

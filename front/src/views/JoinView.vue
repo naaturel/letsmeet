@@ -32,7 +32,6 @@ const token = ref("");
   min-width: 300px;
 }
 
-
 .actions-group {
   min-height: 250px;
 }
