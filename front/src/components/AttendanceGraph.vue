@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {onMounted} from "vue";
-import {Chart} from "chart.js/auto";
+import {Chart, type ChartItem} from "chart.js/auto";
 import {Event} from "@/models/Event.ts";
 
 
@@ -18,8 +18,9 @@ onMounted(() => {
 
 function draw() {
   const ctx = document.getElementById('myChart');
+  if(!ctx) return;
 
-  new Chart(ctx, {
+  new Chart(ctx as ChartItem, {
     type: 'doughnut',
     data : {
       labels: data.dates,
