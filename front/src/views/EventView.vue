@@ -38,7 +38,7 @@ function extractToken() : string {
     </div>
     <div v-else class="container">
       <AttendanceGraph :event="event" />
-      <Calendar/>
+      <Calendar class="calendar"/>
     </div>
 </template>
 
@@ -48,7 +48,7 @@ function extractToken() : string {
 }
 
 @media screen and (min-width: 1001px) {
-  .attendance-graph
+  .attendance-graph, .calendar
   {
     width: 50%;
     height: 50%;
@@ -57,10 +57,10 @@ function extractToken() : string {
 }
 
 @media screen and (max-width: 1000px) {
-  .attendance-graph
+  .attendance-graph, .calendar
   {
-    width: 500px;
-    height: 500px;
+    width: 80%;
+    height: fit-content;
   }
 
 }

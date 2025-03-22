@@ -43,7 +43,7 @@ function setBarTooltip(bar : HTMLElement, attendeesCount : number) : void{
   tooltip.innerText = attendeesCount.toString();
 
   tooltip.style.position = 'absolute';
-  tooltip.style.visibility = 'hidden'; // Initially hidden
+  tooltip.style.visibility = 'hidden';
   tooltip.style.backgroundColor = 'black';
   tooltip.style.color = 'white';
   tooltip.style.padding = '5px';
@@ -80,8 +80,6 @@ function queryContainer() : HTMLElement {
 .graph {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   gap: 10px;
   border-left: solid 1px black;
   border-bottom: solid 1px black;
