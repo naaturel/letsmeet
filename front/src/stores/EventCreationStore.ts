@@ -33,12 +33,15 @@ function mapToState(dto : EventDto) : EventState {
   let event : EventState = { name : "", token : "", dates: new Map<number, AttendeeState[]>() };
   event.name = dto.name;
   event.token = dto.token;
-  dto.attendances.forEach(value => {
-
+  dto.attendances.forEach(attendance => {
+    let timestamp = attendance.date.timestamp;
+    let attendee = attendance.attendee;
+    if(event.dates.has(timestamp)) {
+      event.dates.get(timestamp)?.push({name : attendee.name});
+    } else {
+      event.dates.set(timestamp, [{name : attendee.name}]);
+    }
   })
-  /*Object.entries(dto.dates).forEach(([key, attendees]) => {
-    event.dates.set(Number(key), attendees);
-  });*/
   return event;
 }
 
@@ -96,7 +99,6 @@ export const eventCreationStore = defineStore('eventStore', {
     async createEvent() : Promise<string> {
       try {
         let event = mapToDto(this.event);
-        console.log(event)
         let res = await requests.createEvent(event)
         if(res) return res;
         throw new Error("Unable to create event");
