@@ -4,14 +4,12 @@ import type {Attendee} from "@/models/Attendee.ts";
 export class AttendanceGraph {
 
   private event: Event;
-  private maxAttendees: number;
+  private readonly maxAttendees: number;
 
   public constructor(event : Event) {
     this.event = event;
     this.maxAttendees = event.getMaxAttendees();
-    console.log(this.maxAttendees);
   }
-
 
   public getDates() : number[] {
     return Array.from(this.event.getDates());

@@ -51,7 +51,7 @@ function extractToken() : string {
   .attendance-graph, .calendar
   {
     width: 50%;
-    height: 50%;
+    height: fit-content;
   }
 
 }
@@ -59,7 +59,11 @@ function extractToken() : string {
 @media screen and (max-width: 1000px) {
   .attendance-graph, .calendar
   {
-    width: 80%;
+    width: 100%;
+  }
+
+  .attendance-graph, .calendar
+  {
     height: fit-content;
   }
 

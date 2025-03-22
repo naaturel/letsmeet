@@ -1,5 +1,4 @@
 import type {Attendee, AttendeeState} from "@/models/Attendee.ts";
-import {DateHelper} from "@/helpers/DateHelper.ts";
 
 export class Event {
 

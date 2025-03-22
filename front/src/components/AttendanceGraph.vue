@@ -4,6 +4,7 @@ import {onMounted, ref} from "vue";
 import {Event} from "@/models/Event.ts";
 import {AttendanceGraph} from "@/models/AttendanceGraph.ts";
 import type {Attendee} from "@/models/Attendee.ts";
+import {DateHelper} from "@/helpers/DateHelper.ts";
 
 const props = defineProps<{
   event: Event;
@@ -16,12 +17,14 @@ onMounted(() => {
 })
 
 function render() : void{
-  let container = queryContainer();
-  for (let date of graph.getDates()) {
+  let container = queryContainer()
+  let dates = graph.getDates();
+  for (let date of dates) {
+    console.log(date);
     let attendees: Attendee[] = graph.getAttendees(date);
     let bar = addBar(container);
     setBarSize(bar, graph.getRatio(date));
-    setBarTooltip(bar, graph.getAttendees(date).length);
+    setBarTooltip(bar, `${DateHelper.formatDate(date)} \n Attendees : ${graph.getAttendees(date).length}`);
   }
 }
 
@@ -37,10 +40,9 @@ function setBarSize(bar : HTMLElement, ratio : number) : void{
   bar.style.width = `${ratio*100}%`;
 }
 
-function setBarTooltip(bar : HTMLElement, attendeesCount : number) : void{
+function setBarTooltip(bar : HTMLElement, info : string) : void{
   let tooltip = document.createElement('div');
-  tooltip.classList.add('tooltip');
-  tooltip.innerText = attendeesCount.toString();
+  tooltip.innerText = info;
 
   tooltip.style.position = 'absolute';
   tooltip.style.visibility = 'hidden';
@@ -99,18 +101,7 @@ function queryContainer() : HTMLElement {
 }
 
 .tooltip {
-  position: absolute;
-  background-color: black;
-  padding: 5px;
-  border-radius: 5px;
-  visibility: hidden;
-  opacity: 0;
   transition: opacity 0.3s;
-}
-
-.tooltip.visible {
-  visibility: visible;
-  opacity: 1;
 }
 
 </style>
